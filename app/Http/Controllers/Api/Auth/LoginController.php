@@ -43,15 +43,25 @@ class LoginController extends Controller
     // تسجيل الخروج عبر API
     public function studentLogout(Request $request)
     {
-        $user = $request->user(); // الطالب المسجل حاليًا
+        if (Auth::guard('student')->attempt(['email' => $request->email, 'password' => $request->password])) {
+            $parent = Auth::guard('student')->user();
+            $token = $parent->createToken('StudentToken')->plainTextToken;
 
-        if ($user) {
-            $user->currentAccessToken()->delete();
+            return response()->json([
+                'message' => 'تم تسجيل خروج الطالب بنجاح',
+                'user' => $parent,
+                'token' => $token
+            ]);
         }
+        // $user = $request->user(); // الطالب المسجل حاليًا
 
-        return response()->json([
-            'message' => 'تم تسجيل خروج الطالب بنجاح'
-        ]);
+        // if ($user) {
+        //     $user->currentAccessToken()->delete();
+        // }
+
+        // return response()->json([
+        //     'message' => 'تم تسجيل خروج الطالب بنجاح'
+        // ]);
     }
 
     public function parentLogout(Request $request)
