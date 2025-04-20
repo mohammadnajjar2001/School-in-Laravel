@@ -3,6 +3,9 @@
 use App\Http\Controllers\Api\Auth\LoginController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\EventController;
+use App\Http\Controllers\Api\QuizzeController;
+use App\Http\Controllers\Api\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +21,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/test', [LoginController::class, 'test']);
 
 
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/student/events', [EventController::class, 'index']);
+    Route::get('/student/quizzes', [QuizzeController::class, 'index']);
+    Route::put('/student/password', [StudentController::class, 'updatePassword']);
+    Route::get('/student/profile', [StudentController::class, 'showProfile']);
+
+});
 
 // مسار تسجيل خروج الطالب
 Route::post('/login/student', [LoginController::class, 'studentLogin'])->name('api.login.student');
