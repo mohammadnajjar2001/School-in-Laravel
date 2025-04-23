@@ -27,6 +27,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/student/quizzes', [QuizzeController::class, 'index']);
     Route::put('/student/password', [StudentController::class, 'updatePassword']);
     Route::get('/student/profile', [StudentController::class, 'showProfile']);
+    Route::get('/student/subjects', [StudentController::class, 'index']);
 
 });
 

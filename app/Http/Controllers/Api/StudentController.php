@@ -6,9 +6,26 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Subject;
 
 class StudentController extends Controller
 {
+    public function index(Request $request)
+    {
+        // نفترض أنك تستخدم Laravel Sanctum و المستخدم هو طالب
+        $student = auth()->user();
+        // التحقق أن الطالب لديه classroom_id
+        if (!$student || !$student->classroom->id) {
+            return response()->json(['message' => 'الطالب غير مرتبط بأي صف'], 404);
+        }
+
+        // جلب المواد الخاصة بصف الطالب
+        $subjects = Subject::where('classroom_id', $student->classroom->id)->get();
+
+        return response()->json([
+            'subjects' => $subjects
+        ]);
+    }
     public function showProfile(Request $request)
     {
         // الحصول على بيانات الطالب المسجل
