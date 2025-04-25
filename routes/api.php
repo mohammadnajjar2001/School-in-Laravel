@@ -28,7 +28,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/student/password', [StudentController::class, 'updatePassword']);
     Route::get('/student/profile', [StudentController::class, 'showProfile']);
     Route::get('/student/subjects', [StudentController::class, 'index']);
-
+    Route::get('/student/quizze/{id}/get-questions', [QuizzeController::class, 'getQuestions']);
+    Route::post('/student/quizze/{id}/answer-questions', [QuizzeController::class, 'answerQuestions']);
 });
 
 // مسار تسجيل خروج الطالب
