@@ -24,11 +24,28 @@ class QuizzeController extends Controller
     }
     public function getQuestions($id)
     {
-        $data = [];
-        $data['questions'] = Question::where('quizze_id', $id)->get();
-        $data['count'] = Question::where('quizze_id', $id)->count();
-        return response()->json($data);
+        // نبحث عن الدرجة كـ Record واحد
+        $degree = Degree::where('quizze_id', $id)
+            ->where('student_id', Auth::id())
+            ->first();
+
+        if ($degree) {
+            // إذا كان هناك سجل، نعيد الـ score داخل JSON به المفتاح 'score'
+            return response()->json([
+                'score' => $degree->score
+            ]);
+        }
+
+        // خلاف ذلك نعيد الأسئلة
+        $questions = Question::where('quizze_id', $id)->get();
+        return response()->json([
+            'questions' => $questions,
+            'count'     => $questions->count(),
+        ]);
     }
+
+
+
     public function answerQuestions(Request $request ,$id)
     {
         $data = $request->data;
