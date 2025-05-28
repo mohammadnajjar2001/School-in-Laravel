@@ -135,7 +135,7 @@
             <!-- Orders Status widgets-->
 
 
-            <div class="row">
+            {{-- <div class="row">
 
                 <div  style="height: 400px;" class="col-xl-12 mb-30">
                     <div class="card card-statistics h-100">
@@ -177,7 +177,6 @@
                                 </div>
                                 <div class="tab-content" id="myTabContent">
 
-                                    {{--students Table--}}
                                     <div class="tab-pane fade active show" id="students" role="tabpanel" aria-labelledby="students-tab">
                                         <div class="table-responsive mt-15">
                                             <table style="text-align: center" class="table center-aligned-table table-hover mb-0">
@@ -213,7 +212,6 @@
                                         </div>
                                     </div>
 
-                                    {{--teachers Table--}}
                                     <div class="tab-pane fade" id="teachers" role="tabpanel" aria-labelledby="teachers-tab">
                                         <div class="table-responsive mt-15">
                                             <table style="text-align: center" class="table center-aligned-table table-hover mb-0">
@@ -246,7 +244,6 @@
                                         </div>
                                     </div>
 
-                                    {{--parents Table--}}
                                     <div class="tab-pane fade" id="parents" role="tabpanel" aria-labelledby="parents-tab">
                                         <div class="table-responsive mt-15">
                                             <table style="text-align: center" class="table center-aligned-table table-hover mb-0">
@@ -278,7 +275,6 @@
                                         </div>
                                     </div>
 
-                                    {{--sections Table--}}
                                     <div class="tab-pane fade" id="fee_invoices" role="tabpanel" aria-labelledby="fee_invoices-tab">
                                         <div class="table-responsive mt-15">
                                             <table style="text-align: center" class="table center-aligned-table table-hover mb-0">
@@ -319,7 +315,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <livewire:calendar />
 

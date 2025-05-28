@@ -121,6 +121,12 @@ class SectionController extends Controller
         return $list_classes;
     }
 
+    public function getStudents($id){
+        $Section = Section::findOrFail($id);
+        $students = $Section->Students->all();
+        return view('pages.Sections.students-section' ,compact('students'));
+    }
+
 }
 
 ?>

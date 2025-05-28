@@ -58,8 +58,9 @@ Route::group(
     Route::group(['namespace' => 'Sections'], function () {
 
         Route::resource('Sections', 'SectionController');
+            Route::get('sections/students/{id}', 'SectionController@getStudents')->name('Section.students');
 
-        Route::get('/classes/{id}', 'SectionController@getclasses');
+            Route::get('/classes/{id}', 'SectionController@getclasses');
 
     });
 

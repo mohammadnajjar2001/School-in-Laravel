@@ -28,5 +28,6 @@ return [
     'Edit'=>'Edit',
     'Delete'=>'Delete',
     'Close' => 'Close',
+    'students_view' => 'students view'
 
 ];

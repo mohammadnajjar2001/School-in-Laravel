@@ -29,5 +29,6 @@ return [
     'Edit'=>'تعديل',
     'Delete'=>'حذف',
     'Close' => 'اغلاق',
+    'students_view' => 'عرض الطلاب'
 
 ];

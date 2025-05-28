@@ -29,6 +29,8 @@ class AttendanceRepository implements AttendanceRepositoryInterface
     public function store($request)
     {
         try {
+            $attendence_date = $request->input('attendence_date');
+
 
             foreach ($request->attendences as $studentid => $attendence) {
 
@@ -43,8 +45,8 @@ class AttendanceRepository implements AttendanceRepositoryInterface
                     'grade_id'=> $request->grade_id,
                     'classroom_id'=> $request->classroom_id,
                     'section_id'=> $request->section_id,
-                    'teacher_id'=> 1,
-                    'attendence_date'=> date('Y-m-d'),
+                    'teacher_id'=> auth()->id(),
+                    'attendence_date'=> $attendence_date,
                     'attendence_status'=> $attendence_status
                 ]);
 
@@ -59,6 +61,8 @@ class AttendanceRepository implements AttendanceRepositoryInterface
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }
+
+
 
     public function update($request)
     {

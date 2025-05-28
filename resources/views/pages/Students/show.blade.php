@@ -33,45 +33,62 @@
                                 </li>
                             </ul>
                             <div class="tab-content">
-                                <div class="tab-pane fade active show" id="home-02" role="tabpanel"
-                                     aria-labelledby="home-02-tab">
-                                    <table class="table table-striped table-hover" style="text-align:center">
-                                        <tbody>
-                                        <tr>
-                                            <th scope="row">{{trans('Students_trans.name')}}</th>
-                                            <td>{{ $Student->name }}</td>
-                                            <th scope="row">{{trans('Students_trans.email')}}</th>
-                                            <td>{{$Student->email}}</td>
-                                            <th scope="row">{{trans('Students_trans.gender')}}</th>
-                                            <td>{{$Student->gender->Name}}</td>
-                                            <th scope="row">{{trans('Students_trans.Nationality')}}</th>
-                                            <td>{{$Student->Nationality->Name}}</td>
-                                        </tr>
+                                <div class="tab-pane fade active show" id="home-02" role="tabpanel" aria-labelledby="home-02-tab">
+                                    <div class="card shadow-sm rounded-4">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-center mb-4 text-success fw-bolder">{{ $Student->name }}</h5>
+                                            <div class="row g-4">
 
-                                        <tr>
-                                            <th scope="row">{{trans('Students_trans.Grade')}}</th>
-                                            <td>{{ $Student->grade->Name }}</td>
-                                            <th scope="row">{{trans('Students_trans.classrooms')}}</th>
-                                            <td>{{$Student->classroom->Name_Class}}</td>
-                                            <th scope="row">{{trans('Students_trans.section')}}</th>
-                                            <td>{{$Student->section->Name_Section}}</td>
-                                            <th scope="row">{{trans('Students_trans.Date_of_Birth')}}</th>
-                                            <td>{{ $Student->Date_Birth}}</td>
-                                        </tr>
+                                                <div class="col-md-6">
+                                                    <label class="fw-bolder text-success">{{ trans('Students_trans.email') }}:</label>
+                                                    <p class="text-muted border-start ps-2">{{ $Student->email }}</p>
+                                                </div>
 
-                                        <tr>
-                                            <th scope="row">{{trans('Students_trans.parent')}}</th>
-                                            <td>{{ $Student->myparent->Name_Father}}</td>
-                                            <th scope="row">{{trans('Students_trans.academic_year')}}</th>
-                                            <td>{{ $Student->academic_year }}</td>
-                                            <th scope="row"></th>
-                                            <td></td>
-                                            <th scope="row"></th>
-                                            <td></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
+                                                <div class="col-md-6">
+                                                    <label class="fw-bolder text-success">{{ trans('Students_trans.gender') }}:</label>
+                                                    <p class="text-muted border-start ps-2">{{ $Student->gender->Name }}</p>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label class="fw-bolder text-success">{{ trans('Students_trans.Nationality') }}:</label>
+                                                    <p class="text-muted border-start ps-2">{{ $Student->Nationality->Name }}</p>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label class="fw-bolder text-success">{{ trans('Students_trans.Grade') }}:</label>
+                                                    <p class="text-muted border-start ps-2">{{ $Student->grade->Name }}</p>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label class="fw-bolder text-success">{{ trans('Students_trans.classrooms') }}:</label>
+                                                    <p class="text-muted border-start ps-2">{{ $Student->classroom->Name_Class }}</p>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label class="fw-bolder text-success">{{ trans('Students_trans.section') }}:</label>
+                                                    <p class="text-muted border-start ps-2">{{ $Student->section->Name_Section }}</p>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label class="fw-bolder text-success">{{ trans('Students_trans.Date_of_Birth') }}:</label>
+                                                    <p class="text-muted border-start ps-2">{{ $Student->Date_Birth }}</p>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label class="fw-bolder text-success">{{ trans('Students_trans.parent') }}:</label>
+                                                    <p class="text-muted border-start ps-2">{{ $Student->myparent->Name_Father }}</p>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label class="fw-bolder text-success">{{ trans('Students_trans.academic_year') }}:</label>
+                                                    <p class="text-muted border-start ps-2">{{ $Student->academic_year }}</p>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+
 
                                 <div class="tab-pane fade" id="profile-02" role="tabpanel"
                                      aria-labelledby="profile-02-tab">

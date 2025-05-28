@@ -32,5 +32,8 @@ class Section extends Model
     {
         return $this->belongsTo('App\Models\Grade','Grade_id');
     }
-
+    public function Students()
+    {
+        return $this->hasMany('App\Models\Student', 'section_id');
+    }
 }

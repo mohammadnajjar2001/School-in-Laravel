@@ -35,82 +35,78 @@
 
 
 
-    <h5 style="font-family: 'Cairo', sans-serif;color: red"> تاريخ اليوم : {{ date('Y-m-d') }}</h5>
-    <form method="post" action="{{ route('Attendance.store') }}">
 
+    <form method="post" action="{{ route('Attendance.store') }}">
         @csrf
-        <table id="datatable" class="table  table-hover table-sm table-bordered p-0" data-page-length="50"
-               style="text-align: center">
+
+        <div class="mb-3 ">
+            <label for="attendence_date" style="font-family: 'Cairo', sans-serif; font-weight: bold;">اختر التاريخ:</label>
+            <input type="date" name="attendence_date" id="attendence_date" class="form-control bg-success"
+                   value="{{ request('attendence_date', date('Y-m-d')) }}" required>
+        </div>
+
+        {{-- الحقول العامة مرة واحدة فقط --}}
+        <input type="hidden" name="grade_id" value="{{ $students[0]->Grade_id ?? '' }}">
+        <input type="hidden" name="classroom_id" value="{{ $students[0]->Classroom_id ?? '' }}">
+        <input type="hidden" name="section_id" value="{{ $students[0]->section_id ?? '' }}">
+
+        <table class="table table-hover table-sm table-bordered text-center">
             <thead>
-            <tr>
-                <th class="alert-success">#</th>
-                <th class="alert-success">{{ trans('Students_trans.name') }}</th>
-                <th class="alert-success">{{ trans('Students_trans.email') }}</th>
-                <th class="alert-success">{{ trans('Students_trans.gender') }}</th>
-                <th class="alert-success">{{ trans('Students_trans.Grade') }}</th>
-                <th class="alert-success">{{ trans('Students_trans.classrooms') }}</th>
-                <th class="alert-success">{{ trans('Students_trans.section') }}</th>
-                <th class="alert-success">{{ trans('Students_trans.Processes') }}</th>
-            </tr>
+                <tr>
+                    <th>#</th>
+                    <th>{{ trans('Students_trans.name') }}</th>
+                    <th>{{ trans('Students_trans.email') }}</th>
+                    <th>{{ trans('Students_trans.gender') }}</th>
+                    <th>{{ trans('Students_trans.Grade') }}</th>
+                    <th>{{ trans('Students_trans.classrooms') }}</th>
+                    <th>{{ trans('Students_trans.section') }}</th>
+                    <th>{{ trans('Students_trans.Processes') }}</th>
+                </tr>
             </thead>
             <tbody>
-            @foreach ($students as $student)
-                <tr>
-                    <td>{{ $loop->index + 1 }}</td>
-                    <td>{{ $student->name }}</td>
-                    <td>{{ $student->email }}</td>
-                    <td>{{ $student->gender->Name }}</td>
-                    <td>{{ $student->grade->Name }}</td>
-                    <td>{{ $student->classroom->Name_Class }}</td>
-                    <td>{{ $student->section->Name_Section }}</td>
-                    <td>
-
-                        @if(isset($student->attendance()->where('attendence_date',date('Y-m-d'))->first()->student_id))
-
-                            <label class="block text-gray-500 font-semibold sm:border-r sm:pr-4">
-                                <input name="attendences[{{ $student->id }}]" disabled
-                                       {{ $student->attendance()->first()->attendence_status == 1 ? 'checked' : '' }}
-                                       class="leading-tight" type="radio" value="presence">
-                                <span class="text-success">حضور</span>
-                            </label>
-
-                            <label class="ml-4 block text-gray-500 font-semibold">
-                                <input name="attendences[{{ $student->id }}]" disabled
-                                       {{ $student->attendance()->first()->attendence_status == 0 ? 'checked' : '' }}
-                                       class="leading-tight" type="radio" value="absent">
-                                <span class="text-danger">غياب</span>
-                            </label>
-
-                        @else
-
-                            <label class="block text-gray-500 font-semibold sm:border-r sm:pr-4">
-                                <input name="attendences[{{ $student->id }}]" class="leading-tight" type="radio"
-                                       value="presence">
-                                <span class="text-success">حضور</span>
-                            </label>
-
-                            <label class="ml-4 block text-gray-500 font-semibold">
-                                <input name="attendences[{{ $student->id }}]" class="leading-tight" type="radio"
-                                       value="absent">
-                                <span class="text-danger">غياب</span>
-                            </label>
-
-                        @endif
-
-                        <input type="hidden" name="student_id[]" value="{{ $student->id }}">
-                        <input type="hidden" name="grade_id" value="{{ $student->Grade_id }}">
-                        <input type="hidden" name="classroom_id" value="{{ $student->Classroom_id }}">
-                        <input type="hidden" name="section_id" value="{{ $student->section_id }}">
-
-                    </td>
-                </tr>
-            @endforeach
+                @foreach ($students as $student)
+                    @php
+                        $selectedDate = request('attendence_date', date('Y-m-d'));
+                        $attendance = $student->attendance()->where('attendence_date', $selectedDate)->first();
+                    @endphp
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $student->name }}</td>
+                        <td>{{ $student->email }}</td>
+                        <td>{{ $student->gender->Name }}</td>
+                        <td>{{ $student->grade->Name }}</td>
+                        <td>{{ $student->classroom->Name_Class }}</td>
+                        <td>{{ $student->section->Name_Section }}</td>
+                        <td>
+                            {{-- @if($attendance)
+                                <label>
+                                    <input type="radio" disabled {{ $attendance->attendence_status ? 'checked' : '' }}>
+                                    <span class="text-success">حضور</span>
+                                </label>
+                                <label>
+                                    <input type="radio" disabled {{ !$attendance->attendence_status ? 'checked' : '' }}>
+                                    <span class="text-danger">غياب</span>
+                                </label>
+                            @else --}}
+                                <label>
+                                    <input type="radio" name="attendences[{{ $student->id }}]" value="presence" required>
+                                    <span class="text-success">حضور</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="attendences[{{ $student->id }}]" value="absent">
+                                    <span class="text-danger">غياب</span>
+                                </label>
+                            {{-- @endif --}}
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
-        <P>
-{{--            <button class="btn btn-success" type="submit">{{ trans('Students_trans.submit') }}</button>--}}
-        </P>
-    </form><br>
+
+        <button type="submit" class="btn btn-success">حفظ الحضور</button>
+    </form>
+
+    <br>
     <!-- row closed -->
 @endsection
 @section('js')

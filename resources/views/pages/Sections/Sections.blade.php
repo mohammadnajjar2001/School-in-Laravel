@@ -94,6 +94,11 @@
                                                                                class="btn btn-outline-danger btn-sm"
                                                                                data-toggle="modal"
                                                                                data-target="#delete{{ $list_Sections->id }}">{{ trans('Sections_trans.Delete') }}</a>
+                                                                               <a href="{{ route('Section.students', ['id' => $list_Sections->id ]) }}" class="btn btn-outline-primary btn-sm">
+                                                                                {{ trans('Sections_trans.students_view') }}
+                                                                            </a>
+
+
                                                                         </td>
                                                                     </tr>
 
