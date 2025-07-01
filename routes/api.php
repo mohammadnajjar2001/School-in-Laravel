@@ -26,6 +26,7 @@ Route::get('/test', [LoginController::class, 'test']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/student/events', [EventController::class, 'index']);
     Route::get('/student/quizzes', [QuizzeController::class, 'index']);
+    Route::get('/student/degree', [QuizzeController::class, 'index1']);
     Route::put('/student/password', [StudentController::class, 'updatePassword']);
     Route::get('/student/profile', [StudentController::class, 'showProfile']);
     Route::get('/student/subjects', [StudentController::class, 'index']);
