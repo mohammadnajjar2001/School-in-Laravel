@@ -11,17 +11,39 @@ use Illuminate\Support\Facades\Auth;
 
 class QuizzeController extends Controller
 {
-    public function index(Request $request)
+    public function index1(Request $request)
     {
+        $studentId = $request->user()->id;
+
         $quizzes = Quizze::where('grade_id', $request->user()->Grade_id)
             ->where('classroom_id', $request->user()->Classroom_id)
             ->where('section_id', $request->user()->section_id)
+            ->whereHas('degree', function ($query) use ($studentId) {
+                $query->where('student_id', $studentId);
+            })
+            ->orderBy('id', 'DESC')
+            ->with('subject', 'teacher', 'classroom', 'grade', 'section', 'degree')
+            ->get();
+
+        return response()->json($quizzes);
+    }
+    public function index(Request $request)
+    {
+        $studentId = $request->user()->id;
+
+        $quizzes = Quizze::where('grade_id', $request->user()->Grade_id)
+            ->where('classroom_id', $request->user()->Classroom_id)
+            ->where('section_id', $request->user()->section_id)
+            ->whereDoesntHave('degree', function ($query) use ($studentId) {
+                $query->where('student_id', $studentId);
+            })
             ->orderBy('id', 'DESC')
             ->with('subject', 'teacher', 'classroom', 'grade', 'section')
             ->get();
 
         return response()->json($quizzes);
     }
+
     public function getQuestions($id)
     {
         // نبحث عن الدرجة كـ Record واحد
@@ -46,14 +68,14 @@ class QuizzeController extends Controller
 
 
 
-    public function answerQuestions(Request $request ,$id)
+    public function answerQuestions(Request $request, $id)
     {
         $data = $request->data;
-        $score = 0 ;
+        $score = 0;
         $degree = new Degree();
         $degree->student_id = Auth::id();
         $degree->quizze_id = $id;
-        foreach($data as $answer){
+        foreach ($data as $answer) {
             $q = Question::findOrFail($answer['q_id']);
             $a = $answer['answer'];
             $degree->question_id = $q->id;
@@ -62,7 +84,6 @@ class QuizzeController extends Controller
             } else {
                 $score += 0;
             }
-
         }
         $degree->date = date('Y-m-d');
         $degree->score = $score;
