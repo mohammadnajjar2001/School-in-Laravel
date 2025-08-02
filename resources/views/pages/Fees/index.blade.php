@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
     @section('title')
-        الرسوم الدراسية
+        {{ trans('Fees.title') }}
     @stop
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
     @section('PageTitle')
-        الرسوم الدراسية
+        {{ trans('Fees.title') }}
     @stop
     <!-- breadcrumb -->
 @endsection
@@ -22,7 +22,7 @@
                         <div class="card card-statistics h-100">
                             <div class="card-body">
                                 <a href="{{route('Fees.create')}}" class="btn btn-success btn-sm" role="button"
-                                   aria-pressed="true">اضافة رسوم جديدة</a><br><br>
+                                   aria-pressed="true">{{ trans('Fees.add_fee') }}</a><br><br>
                                 <div class="table-responsive">
                                     <table id="datatable" class="table  table-hover table-sm table-bordered p-0"
                                            data-page-length="50"
@@ -30,33 +30,32 @@
                                         <thead>
                                         <tr class="alert-success">
                                             <th>#</th>
-                                            <th>الاسم</th>
-                                            <th>المبلغ</th>
-                                            <th>المرحلة الدراسية</th>
-                                            <th>الصف الدراسي</th>
-                                            <th>السنة الدراسية</th>
-                                            <th>ملاحظات</th>
-                                            <th>العمليات</th>
+                                            <th>{{ trans('Fees.name') }}</th>
+                                            <th>{{ trans('Fees.amount') }}</th>
+                                            <th>{{ trans('Fees.grade') }}</th>
+                                            <th>{{ trans('Fees.classroom') }}</th>
+                                            <th>{{ trans('Fees.year') }}</th>
+                                            <th>{{ trans('Fees.description') }}</th>
+                                            <th>{{ trans('Fees.actions') }}</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($fees as $fee)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{$fee->title}}</td>
+                                                <td>{{ $fee->title }}</td>
                                                 <td>{{ number_format($fee->amount, 2) }}</td>
-                                                <td>{{$fee->grade->Name}}</td>
-                                                <td>{{$fee->classroom->Name_Class}}</td>
-                                                <td>{{$fee->year}}</td>
-                                                <td>{{$fee->description}}</td>
+                                                <td>{{ $fee->grade->Name }}</td>
+                                                <td>{{ $fee->classroom->Name_Class }}</td>
+                                                <td>{{ $fee->year }}</td>
+                                                <td>{{ $fee->description }}</td>
                                                 <td>
                                                     <a href="{{route('Fees.edit',$fee->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
-                                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_Fee{{ $fee->id }}" title="{{ trans('Grades_trans.Delete') }}"><i class="fa fa-trash"></i></button>
+                                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_Fee{{ $fee->id }}" title="{{ trans('Fees.delete') }}"><i class="fa fa-trash"></i></button>
                                                     <a href="#" class="btn btn-warning btn-sm" role="button" aria-pressed="true"><i class="far fa-eye"></i></a>
-
                                                 </td>
                                             </tr>
-                                        @include('pages.Fees.Delete')
+                                            @include('pages.Fees.Delete')
                                         @endforeach
                                     </table>
                                 </div>

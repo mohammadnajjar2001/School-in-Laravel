@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
 @section('title')
-    اضافة حصة جديدة
+    {{ __('online_classes.add_new_class') }}
 @stop
 @endsection
 @section('page-header')
 <!-- breadcrumb -->
 @section('PageTitle')
-    اضافة حصة جديدة
+    {{ __('online_classes.add_new_class') }}
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -34,10 +34,10 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="Grade_id">{{ trans('Students_trans.Grade') }} : <span
+                                <label for="Grade_id">{{ __('Students_trans.Grade') }} : <span
                                         class="text-danger">*</span></label>
                                 <select class="custom-select mr-sm-2" name="Grade_id">
-                                    <option selected disabled>{{ trans('Parent_trans.Choose') }}...</option>
+                                    <option selected disabled>{{ __('Parent_trans.Choose') }}...</option>
                                     @foreach ($Grades as $Grade)
                                         <option value="{{ $Grade->id }}">{{ $Grade->Name }}</option>
                                     @endforeach
@@ -47,7 +47,7 @@
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="Classroom_id">{{ trans('Students_trans.classrooms') }} : <span
+                                <label for="Classroom_id">{{ __('Students_trans.classrooms') }} : <span
                                         class="text-danger">*</span></label>
                                 <select class="custom-select mr-sm-2" name="Classroom_id">
 
@@ -57,7 +57,7 @@
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="section_id">{{ trans('Students_trans.section') }} : </label>
+                                <label for="section_id">{{ __('Students_trans.section') }} : </label>
                                 <select class="custom-select mr-sm-2" name="section_id">
 
                                 </select>
@@ -69,27 +69,27 @@
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>عنوان الحصة : <span class="text-danger">*</span></label>
+                                <label>{{ __('online_classes.class_topic') }} : <span class="text-danger">*</span></label>
                                 <input class="form-control" name="topic" type="text">
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>تاريخ ووقت الحصة : <span class="text-danger">*</span></label>
+                                <label>{{ __('online_classes.class_datetime') }} : <span class="text-danger">*</span></label>
                                 <input class="form-control" type="datetime-local" name="start_time">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>مدة الحصة بالدقائق : <span class="text-danger">*</span></label>
+                                <label>{{ __('online_classes.class_duration') }} : <span class="text-danger">*</span></label>
                                 <input class="form-control" name="duration" type="text">
                             </div>
                         </div>
 
                     </div>
                     <button class="btn btn-success btn-sm nextBtn btn-lg pull-right"
-                        type="submit">{{ trans('Students_trans.submit') }}</button>
+                        type="submit">{{ __('Students_trans.submit') }}</button>
                 </form>
 
             </div>
