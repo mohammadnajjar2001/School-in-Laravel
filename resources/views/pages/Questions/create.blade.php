@@ -65,12 +65,18 @@
                                         <div class="form-group">
                                             <label for="Grade_id">اسم الاختبار : <span
                                                     class="text-danger">*</span></label>
-                                            <select class="custom-select mr-sm-2" name="quizze_id">
-                                                <option selected disabled>حدد اسم الاختبار...</option>
-                                                @foreach($quizzes as $quizze)
-                                                    <option value="{{ $quizze->id }}">{{ $quizze->name }}</option>
-                                                @endforeach
-                                            </select>
+                                            @if(isset($quizze_id))
+                                                    <input type="hidden" name="quizze_id" value="{{ $quizze_id }}">
+                                                    <input type="text" class="form-control" value="{{ \App\Models\Quizze::find($quizze_id)?->name }}" disabled>
+                                                @else
+                                                    <select class="custom-select mr-sm-2" name="quizze_id">
+                                                        <option selected disabled>حدد اسم الاختبار...</option>
+                                                        @foreach($quizzes as $quizze)
+                                                            <option value="{{ $quizze->id }}">{{ $quizze->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                @endif
+
                                         </div>
                                     </div>
                                     <div class="col-6">

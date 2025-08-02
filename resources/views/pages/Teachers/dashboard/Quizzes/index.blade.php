@@ -48,8 +48,12 @@
                                                 <td>{{$quizze->classroom->Name_Class}}</td>
                                                 <td>{{$quizze->section->Name_Section}}</td>
                                                 <td>
+                                                    <a href="{{ route('questions.create', ['quizze_id' => $quizze->id]) }}"
+                                                        class="btn btn-warning btn-sm" role="button" aria-pressed="true">
+                                                        <i class="fa fa-question-circle"></i> إضافة سؤال
+                                                    </a>
                                                     <a href="{{route('quizzes.edit',$quizze->id)}}"
-                                                       class="btn btn-info btn-sm" role="button" aria-pressed="true"><i
+                                                        class="btn btn-info btn-sm" role="button" aria-pressed="true"><i
                                                             class="fa fa-edit"></i></a>
                                                     <button type="button" class="btn btn-danger btn-sm"
                                                             data-toggle="modal"

@@ -3,7 +3,9 @@
 namespace App\Repository;
 
 use App\Models\Question;
+use Illuminate\Http\Request;
 use App\Models\Quizze;
+
 
 class QuestionRepository implements QuestionRepositoryInterface
 {
@@ -14,10 +16,12 @@ class QuestionRepository implements QuestionRepositoryInterface
         return view('pages.Questions.index', compact('questions'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        $quizzes = Quizze::get();
-        return view('pages.Questions.create',compact('quizzes'));
+        $quizze_id = $request->quizze_id;
+        $quizzes = Quizze::all(); // في حال لم يُرسل quizze_id
+
+        return view('pages.Questions.create', compact('quizze_id', 'quizzes'));
     }
 
     public function store($request)
