@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'actions'       => 'Processes',
     'Name_Teacher'=>'Name Teacher',
     'Add_Teacher'=>'Add Teacher',
     'Edit_Teacher'=>'Edit Teacher',

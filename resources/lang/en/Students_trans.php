@@ -31,5 +31,16 @@ return [
     'created_at' => 'created_at',
     'Download' => 'Download',
     'delete' => 'Delete',
+    'name'        => 'Name',
+    'email'       => 'Email',
+    'gender'      => 'Gender',
+    'Grade'       => 'Grade',
+    'classrooms'  => 'Classrooms',
+    'section'     => 'Section',
+    'Processes'   => 'Actions',
+    'presence'    => 'Presence',
+    'absent'      => 'Absent',
+    'save_attendance' => 'Save Attendance',
+    'choose_date' => 'Choose Date',
 
 ];
