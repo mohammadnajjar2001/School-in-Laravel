@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'actions'       => 'العمليات',
     'Name_Teacher'=>'اسم المعلم',
     'Add_Teacher'=>'اضافة معلم',
     'Edit_Teacher'=>'تعديل معلم',
