@@ -28,6 +28,17 @@ return [
     'Edit'=>'Edit',
     'Delete'=>'Delete',
     'Close' => 'Close',
-    'students_view' => 'students view'
+    'students_view' => 'students view',
+        'title_page'      => 'Sections',
+    'add_section'     => 'Add Section',
+    'Name_Section'    => 'Section Name',
+    'Name_Class'      => 'Class Name',
+    'Status'          => 'Status',
+    'Processes'       => 'Actions',
+    'Active'          => 'Active',
+    'Inactive'        => 'Inactive',
+    'student_list'    => 'Student List',
+    'attendance_absence' => 'Attendance and Absence',
+
 
 ];

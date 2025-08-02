@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 @section('title')
-{{trans('main_trans.Main_title')}}
+    {{ trans('main_trans.Main_title') }}
 @stop
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,9 +24,9 @@
         <!--=================================
  preloader -->
 
- <div id="pre-loader">
-     <img src="{{ URL::asset('assets/images/pre-loader/loader-01.svg') }}" alt="">
- </div>
+        <div id="pre-loader">
+            <img src="{{ URL::asset('assets/images/pre-loader/loader-01.svg') }}" alt="">
+        </div>
 
         <!--=================================
  preloader -->
@@ -38,10 +39,10 @@
  Main content -->
         <!-- main-content -->
         <div class="content-wrapper">
-            <div class="page-title" >
+            <div class="page-title">
                 <div class="row">
-                    <div class="col-sm-6" >
-                        <h4 class="mb-0" style="font-family: 'Cairo', sans-serif">لوحة تحكم الادمن</h4>
+                    <div class="col-sm-6">
+                        <h4 class="mb-0" style="font-family: 'Cairo', sans-serif">{{ trans('main_trans.ControlPanel') }}</h4>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right">
@@ -50,7 +51,7 @@
                 </div>
             </div>
             <!-- widgets -->
-            <div class="row" >
+            <div class="row">
                 <div class="col-xl-3 col-lg-6 col-md-6 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
@@ -61,12 +62,15 @@
                                     </span>
                                 </div>
                                 <div class="float-right text-right">
-                                    <p class="card-text text-dark">عدد الطلاب</p>
-                                    <h4>{{\App\Models\Student::count()}}</h4>
+                                    {{-- <p class="card-text text-dark">عدد الطلاب</p> --}}
+                                    <p class="card-text text-dark">{{ trans('main_trans.Student') }} </p>
+                                    <h4>{{ \App\Models\Student::count() }}</h4>
                                 </div>
                             </div>
                             <p class="text-muted pt-3 mb-0 mt-2 border-top">
-                                <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a href="{{route('Students.index')}}" target="_blank"><span class="text-danger">عرض البيانات</span></a>
+                                <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a
+                                    href="{{ route('Students.index') }}" target="_blank"><span
+                                        class="text-danger">{{ trans('main_trans.ShowData') }}</span></a>
                             </p>
                         </div>
                     </div>
@@ -81,12 +85,14 @@
                                     </span>
                                 </div>
                                 <div class="float-right text-right">
-                                    <p class="card-text text-dark">عدد المعلمين</p>
-                                    <h4>{{\App\Models\Teacher::count()}}</h4>
+                                    <p class="card-text text-dark">{{ trans('main_trans.Teacher') }}</p>
+                                    <h4>{{ \App\Models\Teacher::count() }}</h4>
                                 </div>
                             </div>
                             <p class="text-muted pt-3 mb-0 mt-2 border-top">
-                                <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a href="{{route('Teachers.index')}}" target="_blank"><span class="text-danger">عرض البيانات</span></a>
+                                <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a
+                                    href="{{ route('Teachers.index') }}" target="_blank"><span
+                                        class="text-danger">{{ trans('main_trans.ShowData') }}</span></a>
                             </p>
                         </div>
                     </div>
@@ -101,12 +107,14 @@
                                     </span>
                                 </div>
                                 <div class="float-right text-right">
-                                    <p class="card-text text-dark">عدد اولياء الامور</p>
-                                    <h4>{{\App\Models\My_Parent::count()}}</h4>
+                                    <p class="card-text text-dark">{{ trans('main_trans.Parent') }}</p>
+                                    <h4>{{ \App\Models\My_Parent::count() }}</h4>
                                 </div>
                             </div>
                             <p class="text-muted pt-3 mb-0 mt-2 border-top">
-                                <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a href="{{route('add_parent')}}" target="_blank"><span class="text-danger">عرض البيانات</span></a>
+                                <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a
+                                    href="{{ route('add_parent') }}" target="_blank"><span
+                                        class="text-danger">{{ trans('main_trans.ShowData') }}</span></a>
                             </p>
                         </div>
                     </div>
@@ -121,12 +129,14 @@
                                     </span>
                                 </div>
                                 <div class="float-right text-right">
-                                    <p class="card-text text-dark">عدد الفصول الدراسية</p>
-                                    <h4>{{\App\Models\Section::count()}}</h4>
+                                    <p class="card-text text-dark">{{ trans('main_trans.Classes') }}</p>
+                                    <h4>{{ \App\Models\Section::count() }}</h4>
                                 </div>
                             </div>
                             <p class="text-muted pt-3 mb-0 mt-2 border-top">
-                                <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a href="{{route('Sections.index')}}" target="_blank"><span class="text-danger">عرض البيانات</span></a>
+                                <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a
+                                    href="{{ route('Sections.index') }}" target="_blank"><span
+                                        class="text-danger">{{ trans('main_trans.ShowData') }}</span></a>
                             </p>
                         </div>
                     </div>

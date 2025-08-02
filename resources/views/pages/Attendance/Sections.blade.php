@@ -2,24 +2,26 @@
 @section('css')
     @toastr_css
 @section('title')
-    {{ trans('Sections_trans.title_page') }}: الحضور والغياب
+    {{ trans('Sections_trans.title_page') }}: {{ trans('Sections_trans.attendance_absence') ?? 'الحضور والغياب' }}
 @stop
 @endsection
+
 @section('page-header')
     <!-- breadcrumb -->
 @section('PageTitle')
-    {{ trans('Sections_trans.title_page') }}: الحضور والغياب
+    {{ trans('Sections_trans.title_page') }}: {{ trans('Sections_trans.attendance_absence') ?? 'الحضور والغياب' }}
 @stop
 <!-- breadcrumb -->
 @endsection
+
 @section('content')
     <!-- row -->
     <div class="row">
         <div class="col-md-12 mb-30">
             <div class="card card-statistics h-100">
                 <div class="card-body">
-{{--                    <a class="button x-small" href="#" data-toggle="modal" data-target="#exampleModal">--}}
-{{--                        {{ trans('Sections_trans.add_section') }}</a>--}}
+                    {{-- <a class="button x-small" href="#" data-toggle="modal" data-target="#exampleModal">
+                        {{ trans('Sections_trans.add_section') }}</a> --}}
                 </div>
 
                 @if ($errors->any())
@@ -29,7 +31,7 @@
                                 <li>{{ $error }}</li>
                             @endforeach
                         </ul>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="{{ trans('Sections_trans.Close') ?? 'اغلاق' }}">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -51,6 +53,7 @@
                                                     <div class="card-body">
                                                         <div class="d-block d-md-flex justify-content-between">
                                                             <div class="d-block">
+                                                                {{-- ممكن اضافة محتوى إضافي هنا --}}
                                                             </div>
                                                         </div>
                                                         <div class="table-responsive mt-15">
@@ -58,27 +61,30 @@
                                                                 <thead>
                                                                 <tr class="text-dark">
                                                                     <th>#</th>
-                                                                    <th>{{ trans('Sections_trans.Name_Section') }}
-                                                                    </th>
+                                                                    <th>{{ trans('Sections_trans.Name_Section') }}</th>
                                                                     <th>{{ trans('Sections_trans.Name_Class') }}</th>
                                                                     <th>{{ trans('Sections_trans.Status') }}</th>
                                                                     <th>{{ trans('Sections_trans.Processes') }}</th>
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                <?php $i = 0; ?>
+                                                                @php $i = 0; @endphp
                                                                 @foreach ($Grade->Sections as $list_Sections)
                                                                     <tr>
-                                                                        <?php $i++; ?>
+                                                                        @php $i++; @endphp
                                                                         <td>{{ $i }}</td>
                                                                         <td>{{ $list_Sections->Name_Section }}</td>
                                                                         <td>{{ $list_Sections->My_classs->Name_Class }}</td>
                                                                         <td>
-                                                                            <label class="badge badge-{{$list_Sections->Status == 1 ? 'success':'danger'}}">{{$list_Sections->Status == 1 ? 'نشط':'غير نشط'}}</label>
+                                                                            <label class="badge badge-{{ $list_Sections->Status == 1 ? 'success' : 'danger' }}">
+                                                                                {{ $list_Sections->Status == 1 ? trans('Sections_trans.Active') : trans('Sections_trans.Inactive') }}
+                                                                            </label>
                                                                         </td>
 
                                                                         <td>
-                                                                            <a href="{{route('Attendance.show',$list_Sections->id)}}" class="btn btn-warning btn-sm" role="button" aria-pressed="true">قائمة الطلاب</a>
+                                                                            <a href="{{ route('Attendance.show', $list_Sections->id) }}" class="btn btn-warning btn-sm" role="button" aria-pressed="true">
+                                                                                {{ trans('Sections_trans.student_list') }}
+                                                                            </a>
                                                                         </td>
                                                                     </tr>
                                                                 @endforeach
@@ -89,43 +95,44 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
-                                    @endforeach
                                 </div>
+
+                            @endforeach
+
                         </div>
                     </div>
-
 
                 </div>
             </div>
         </div>
         <!-- row closed -->
-        @endsection
-        @section('js')
-            @toastr_js
-            @toastr_render
-            <script>
-                $(document).ready(function () {
-                    $('select[name="Grade_id"]').on('change', function () {
-                        var Grade_id = $(this).val();
-                        if (Grade_id) {
-                            $.ajax({
-                                url: "{{ URL::to('classes') }}/" + Grade_id,
-                                type: "GET",
-                                dataType: "json",
-                                success: function (data) {
-                                    $('select[name="Class_id"]').empty();
-                                    $.each(data, function (key, value) {
-                                        $('select[name="Class_id"]').append('<option value="' + key + '">' + value + '</option>');
-                                    });
-                                },
+@endsection
+
+@section('js')
+    @toastr_js
+    @toastr_render
+    <script>
+        $(document).ready(function () {
+            $('select[name="Grade_id"]').on('change', function () {
+                var Grade_id = $(this).val();
+                if (Grade_id) {
+                    $.ajax({
+                        url: "{{ URL::to('classes') }}/" + Grade_id,
+                        type: "GET",
+                        dataType: "json",
+                        success: function (data) {
+                            $('select[name="Class_id"]').empty();
+                            $.each(data, function (key, value) {
+                                $('select[name="Class_id"]').append('<option value="' + key + '">' + value + '</option>');
                             });
-                        } else {
-                            console.log('AJAX load did not work');
-                        }
+                        },
                     });
-                });
-
-            </script>
-
+                } else {
+                    console.log('AJAX load did not work');
+                }
+            });
+        });
+    </script>
 @endsection

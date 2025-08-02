@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
 @section('title')
-    قائمة الحضور والغياب للطلاب
+    {{ trans('Attendance_trans.page_title') }}
 @stop
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
 @section('PageTitle')
-    قائمة الحضور والغياب للطلاب
+    {{ trans('Attendance_trans.page_title') }}
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -33,14 +33,13 @@
         </div>
     @endif
 
-
-
-
     <form method="post" action="{{ route('Attendance.store') }}">
         @csrf
 
         <div class="mb-3 ">
-            <label for="attendence_date" style="font-family: 'Cairo', sans-serif; font-weight: bold;">اختر التاريخ:</label>
+            <label for="attendence_date" style="font-family: 'Cairo', sans-serif; font-weight: bold;">
+                {{ trans('Attendance_trans.choose_date') }}:
+            </label>
             <input type="date" name="attendence_date" id="attendence_date" class="form-control bg-success"
                    value="{{ request('attendence_date', date('Y-m-d')) }}" required>
         </div>
@@ -60,7 +59,7 @@
                     <th>{{ trans('Students_trans.Grade') }}</th>
                     <th>{{ trans('Students_trans.classrooms') }}</th>
                     <th>{{ trans('Students_trans.section') }}</th>
-                    <th>{{ trans('Students_trans.Processes') }}</th>
+                    <th>{{ trans('Attendance_trans.attendance_status') }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -78,32 +77,21 @@
                         <td>{{ $student->classroom->Name_Class }}</td>
                         <td>{{ $student->section->Name_Section }}</td>
                         <td>
-                            {{-- @if($attendance)
-                                <label>
-                                    <input type="radio" disabled {{ $attendance->attendence_status ? 'checked' : '' }}>
-                                    <span class="text-success">حضور</span>
-                                </label>
-                                <label>
-                                    <input type="radio" disabled {{ !$attendance->attendence_status ? 'checked' : '' }}>
-                                    <span class="text-danger">غياب</span>
-                                </label>
-                            @else --}}
-                                <label>
-                                    <input type="radio" name="attendences[{{ $student->id }}]" value="presence" required>
-                                    <span class="text-success">حضور</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="attendences[{{ $student->id }}]" value="absent">
-                                    <span class="text-danger">غياب</span>
-                                </label>
-                            {{-- @endif --}}
+                            <label>
+                                <input type="radio" name="attendences[{{ $student->id }}]" value="presence" required>
+                                <span class="text-success">{{ trans('Attendance_trans.present') }}</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="attendences[{{ $student->id }}]" value="absent">
+                                <span class="text-danger">{{ trans('Attendance_trans.absent') }}</span>
+                            </label>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
 
-        <button type="submit" class="btn btn-success">حفظ الحضور</button>
+        <button type="submit" class="btn btn-success">{{ trans('Attendance_trans.save_attendance') }}</button>
     </form>
 
     <br>
