@@ -16,6 +16,12 @@ class QuestionController extends Controller
 //        return $questions;
         return view('pages.Teachers.dashboard.Questions.index', compact('questions','quizz'));
     }
+    public function create(Request $request)
+    {
+        $quizze_id = $request->quizze_id;
+        return view('pages.Teachers.dashboard.Questions.create', compact('quizze_id'));
+    }
+
     public function store(Request $request)
     {
         try {

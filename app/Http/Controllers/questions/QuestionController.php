@@ -21,9 +21,10 @@ class QuestionController extends Controller
         return $this->Question->index();
     }
 
-    public function create()
+
+    public function create(Request $request)
     {
-        return $this->Question->create();
+        return $this->Question->create($request);
     }
 
     public function store(Request $request)

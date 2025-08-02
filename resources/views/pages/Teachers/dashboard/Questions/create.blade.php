@@ -38,7 +38,7 @@
                                         <label for="title">اسم السؤال</label>
                                         <input type="text" name="title" id="input-name"
                                                class="form-control form-control-alternative" autofocus>
-                                        <input type="hidden" value="{{$quizz_id}}" name="quizz_id">
+                                        <input type="hidden" value="{{$quizze_id}}" name="quizz_id">
                                     </div>
                                 </div>
                                 <br>

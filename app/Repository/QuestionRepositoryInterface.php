@@ -6,7 +6,7 @@ interface QuestionRepositoryInterface
 {
     public function index();
 
-    public function create();
+    public function create(\Illuminate\Http\Request $request);
 
     public function store($request);
 
