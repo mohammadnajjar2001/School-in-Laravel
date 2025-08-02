@@ -30,9 +30,37 @@ class QuizzController extends Controller
         return view('pages.Teachers.dashboard.Quizzes.create', $data);
     }
 
-
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'Name_en'      => 'required|string|max:255',
+            'Name_ar'      => 'required|string|max:255',
+            'subject_id'   => 'required|exists:subjects,id',
+            'Grade_id'     => 'required|exists:grades,id',
+            'Classroom_id' => 'required|exists:classrooms,id',
+            'section_id'   => 'required|exists:sections,id',
+        ], [
+            'Name_en.required' => 'اسم الاختبار بالإنجليزية مطلوب.',
+            'Name_en.string'   => 'اسم الاختبار بالإنجليزية يجب أن يكون نصًا.',
+            'Name_en.max'      => 'اسم الاختبار بالإنجليزية يجب ألا يزيد عن 255 حرفًا.',
+
+            'Name_ar.required' => 'اسم الاختبار بالعربية مطلوب.',
+            'Name_ar.string'   => 'اسم الاختبار بالعربية يجب أن يكون نصًا.',
+            'Name_ar.max'      => 'اسم الاختبار بالعربية يجب ألا يزيد عن 255 حرفًا.',
+
+            'subject_id.required' => 'المادة مطلوبة.',
+            'subject_id.exists'   => 'المادة المختارة غير موجودة.',
+
+            'Grade_id.required' => 'المرحلة الدراسية مطلوبة.',
+            'Grade_id.exists'   => 'المرحلة الدراسية غير موجودة.',
+
+            'Classroom_id.required' => 'الصف الدراسي مطلوب.',
+            'Classroom_id.exists'   => 'الصف الدراسي غير موجود.',
+
+            'section_id.required' => 'القسم مطلوب.',
+            'section_id.exists'   => 'القسم غير موجود.',
+        ]);
+
         try {
             $quizzes = new Quizze();
             $quizzes->name = ['en' => $request->Name_en, 'ar' => $request->Name_ar];
@@ -42,10 +70,10 @@ class QuizzController extends Controller
             $quizzes->section_id = $request->section_id;
             $quizzes->teacher_id = auth()->user()->id;
             $quizzes->save();
+
             toastr()->success(trans('messages.success'));
             return redirect()->route('quizzes.create');
-        }
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
     }

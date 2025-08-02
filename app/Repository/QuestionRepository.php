@@ -24,8 +24,23 @@ class QuestionRepository implements QuestionRepositoryInterface
         return view('pages.Questions.create', compact('quizze_id', 'quizzes'));
     }
 
-    public function store($request)
+    public function store(Request $request)
     {
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'answers' => 'required|string',
+            'right_answer' => 'required|string|max:255',
+            'score' => 'required|integer',
+            'quizze_id' => 'required|exists:quizzes,id',
+        ], [
+            'title.required' => 'حقل اسم السؤال مطلوب',
+            'answers.required' => 'حقل الاجابات مطلوب',
+            'right_answer.required' => 'حقل الاجابة الصحيحة مطلوب',
+            'score.required' => 'حقل الدرجة مطلوب',
+            'quizze_id.required' => 'حقل اسم الاختبار مطلوب',
+            'quizze_id.exists' => 'الاختبار المختار غير موجود',
+        ]);
+
         try {
             $question = new Question();
             $question->title = $request->title;
@@ -34,6 +49,7 @@ class QuestionRepository implements QuestionRepositoryInterface
             $question->score = $request->score;
             $question->quizze_id = $request->quizze_id;
             $question->save();
+
             toastr()->success(trans('messages.success'));
             return redirect()->route('Questions.create');
         } catch (\Exception $e) {

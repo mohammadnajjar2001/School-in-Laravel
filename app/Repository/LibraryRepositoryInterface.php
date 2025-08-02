@@ -8,7 +8,7 @@ interface LibraryRepositoryInterface
 
     public function create();
 
-    public function store($request);
+    public function store(\Illuminate\Http\Request $request);
 
     public function edit($id);
 

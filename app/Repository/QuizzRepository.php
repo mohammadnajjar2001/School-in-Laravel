@@ -6,6 +6,8 @@ use App\Models\Grade;
 use App\Models\Quizze;
 use App\Models\Subject;
 use App\Models\Teacher;
+use Illuminate\Http\Request;
+
 
 class QuizzRepository implements QuizzRepositoryInterface
 {
@@ -24,10 +26,34 @@ class QuizzRepository implements QuizzRepositoryInterface
         return view('pages.Quizzes.create', $data);
     }
 
-    public function store($request)
+    public function store(Request $request)
     {
-        try {
+        $messages = [
+            'Name_en.required'    => 'اسم الاختبار بالإنجليزية مطلوب.',
+            'Name_ar.required'    => 'اسم الاختبار بالعربية مطلوب.',
+            'subject_id.required' => 'المادة الدراسية مطلوبة.',
+            'subject_id.exists'   => 'المادة الدراسية غير موجودة.',
+            'Grade_id.required'   => 'المرحلة الدراسية مطلوبة.',
+            'Grade_id.exists'     => 'المرحلة الدراسية غير موجودة.',
+            'Classroom_id.required' => 'الصف الدراسي مطلوب.',
+            'Classroom_id.exists'   => 'الصف الدراسي غير موجود.',
+            'section_id.required' => 'القسم مطلوب.',
+            'section_id.exists'   => 'القسم غير موجود.',
+            'teacher_id.required' => 'المعلم مطلوب.',
+            'teacher_id.exists'   => 'المعلم غير موجود.',
+        ];
 
+        $validated = $request->validate([
+            'Name_en'      => 'required|string|max:255',
+            'Name_ar'      => 'required|string|max:255',
+            'subject_id'   => 'required|exists:subjects,id',
+            'Grade_id'     => 'required|exists:grades,id',
+            'Classroom_id' => 'required|exists:classrooms,id',
+            'section_id'   => 'required|exists:sections,id',
+            'teacher_id'   => 'required|exists:teachers,id',
+        ], $messages);
+
+        try {
             $quizzes = new Quizze();
             $quizzes->name = ['en' => $request->Name_en, 'ar' => $request->Name_ar];
             $quizzes->subject_id = $request->subject_id;
@@ -36,13 +62,14 @@ class QuizzRepository implements QuizzRepositoryInterface
             $quizzes->section_id = $request->section_id;
             $quizzes->teacher_id = $request->teacher_id;
             $quizzes->save();
+
             toastr()->success(trans('messages.success'));
             return redirect()->route('Quizzes.create');
-        }
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
     }
+
 
     public function edit($id)
     {
