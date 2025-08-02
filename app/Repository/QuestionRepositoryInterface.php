@@ -8,7 +8,7 @@ interface QuestionRepositoryInterface
 
     public function create(\Illuminate\Http\Request $request);
 
-    public function store($request);
+    public function store(\Illuminate\Http\Request $request);
 
     public function edit($id);
 

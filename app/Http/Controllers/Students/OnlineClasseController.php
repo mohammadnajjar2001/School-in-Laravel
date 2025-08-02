@@ -34,8 +34,32 @@ class OnlineClasseController extends Controller
 
     public function store(Request $request)
     {
-        try {
+        // ✅ التحقق من صحة البيانات
+        $validated = $request->validate([
+            'Grade_id' => 'required|exists:grades,id',
+            'Classroom_id' => 'required|exists:classrooms,id',
+            'section_id' => 'required|exists:sections,id',
+            'topic' => 'required|string|max:255',
+            'start_time' => 'required|date|after:now',
+            'duration' => 'required|integer|min:1',
+        ], [
+            'Grade_id.required' => 'يرجى اختيار المرحلة الدراسية.',
+            'Grade_id.exists' => 'المرحلة الدراسية غير موجودة.',
+            'Classroom_id.required' => 'يرجى اختيار الصف الدراسي.',
+            'Classroom_id.exists' => 'الصف الدراسي غير موجود.',
+            'section_id.required' => 'يرجى اختيار القسم.',
+            'section_id.exists' => 'القسم غير موجود.',
+            'topic.required' => 'يرجى إدخال عنوان الحصة.',
+            'topic.max' => 'عنوان الحصة لا يجب أن يتجاوز 255 حرفًا.',
+            'start_time.required' => 'يرجى تحديد تاريخ ووقت الحصة.',
+            'start_time.date' => 'يجب أن يكون التاريخ بصيغة صحيحة.',
+            'start_time.after' => 'يجب أن يكون وقت الحصة في المستقبل.',
+            'duration.required' => 'يرجى إدخال مدة الحصة.',
+            'duration.integer' => 'مدة الحصة يجب أن تكون رقمًا صحيحًا.',
+            'duration.min' => 'مدة الحصة يجب أن تكون على الأقل دقيقة واحدة.',
+        ]);
 
+        try {
             $meeting = $this->createMeeting($request);
 
             online_classe::create([
@@ -52,13 +76,14 @@ class OnlineClasseController extends Controller
                 'start_url' => $meeting->start_url,
                 'join_url' => $meeting->join_url,
             ]);
+
             toastr()->success(trans('messages.success'));
             return redirect()->route('online_classes.index');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
-
     }
+
 
 
     public function storeIndirect(Request $request)

@@ -4,6 +4,8 @@ namespace App\Repository;
 
 use App\Http\Traits\AttachFilesTrait;
 use App\Models\Grade;
+use Illuminate\Http\Request;
+
 use App\Models\Library;
 
 class LibraryRepository implements LibraryRepositoryInterface
@@ -23,18 +25,41 @@ class LibraryRepository implements LibraryRepositoryInterface
         return view('pages.library.create',compact('grades'));
     }
 
-    public function store($request)
+
+    public function store(Request $request)
     {
+        // التحقق من صحة البيانات
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'file_name' => 'required|mimes:pdf,doc,docx,zip,rar|max:10240', // max 10MB
+            'Grade_id' => 'required|exists:grades,id',
+            'Classroom_id' => 'required|exists:classrooms,id',
+            'section_id' => 'required|exists:sections,id',
+        ], [
+            'title.required' => 'عنوان الكتاب مطلوب',
+            'file_name.required' => 'ملف الكتاب مطلوب',
+            'file_name.mimes' => 'يجب أن يكون الملف من نوع: pdf, doc, docx, zip, rar',
+            'file_name.max' => 'حجم الملف يجب ألا يتجاوز 10 ميجابايت',
+            'Grade_id.required' => 'المرحلة الدراسية مطلوبة',
+            'Grade_id.exists' => 'المرحلة غير موجودة',
+            'Classroom_id.required' => 'الصف الدراسي مطلوب',
+            'Classroom_id.exists' => 'الصف غير موجود',
+            'section_id.required' => 'القسم مطلوب',
+            'section_id.exists' => 'القسم غير موجود',
+        ]);
+
         try {
             $books = new Library();
             $books->title = $request->title;
-            $books->file_name =  $request->file('file_name')->getClientOriginalName();
+            $books->file_name = $request->file('file_name')->getClientOriginalName();
             $books->Grade_id = $request->Grade_id;
             $books->classroom_id = $request->Classroom_id;
             $books->section_id = $request->section_id;
-            $books->teacher_id = 1;
+            $books->teacher_id = 1; // يمكن تغييره إلى auth()->user()->id إذا كنت تستخدم التوثيق
             $books->save();
-            $this->uploadFile($request,'file_name');
+
+            // رفع الملف
+            $this->uploadFile($request, 'file_name');
 
             toastr()->success(trans('messages.success'));
             return redirect()->route('library.create');
@@ -42,6 +67,7 @@ class LibraryRepository implements LibraryRepositoryInterface
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
     }
+
 
     public function edit($id)
     {
