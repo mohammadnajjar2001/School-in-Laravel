@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
 @section('title')
-    اضافة حصة جديدة اوفلاين
+    {{ __('indirect.add_offline_class') }}
 @stop
 @endsection
 @section('page-header')
 <!-- breadcrumb -->
 @section('PageTitle')
-    اضافة حصة جديدة اوفلاين
+    {{ __('indirect.add_offline_class') }}
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -69,39 +69,38 @@
 
                         <div class="col-md-2">
                             <div class="form-group">
-                                <label>رقم الاجتماع : <span class="text-danger">*</span></label>
+                                <label>{{ __('indirect.meeting_number') }} : <span class="text-danger">*</span></label>
                                 <input class="form-control" name="meeting_id" type="number">
                             </div>
                         </div>
 
-
                         <div class="col-md-2">
                             <div class="form-group">
-                                <label>عنوان الحصة : <span class="text-danger">*</span></label>
+                                <label>{{ __('indirect.class_topic') }} : <span class="text-danger">*</span></label>
                                 <input class="form-control" name="topic" type="text">
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>تاريخ ووقت الحصة : <span class="text-danger">*</span></label>
+                                <label>{{ __('indirect.class_start_time') }} : <span class="text-danger">*</span></label>
                                 <input class="form-control" type="datetime-local" name="start_time">
                             </div>
                         </div>
+
                         <div class="col-md-2">
                             <div class="form-group">
-                                <label>مدة الحصة بالدقائق : <span class="text-danger">*</span></label>
+                                <label>{{ __('indirect.class_duration') }} : <span class="text-danger">*</span></label>
                                 <input class="form-control" name="duration" type="number">
                             </div>
                         </div>
 
                         <div class="col-md-2">
                             <div class="form-group">
-                                <label>كلمة المرور الاجتماع : <span class="text-danger">*</span></label>
+                                <label>{{ __('indirect.meeting_password') }} : <span class="text-danger">*</span></label>
                                 <input class="form-control" name="password" type="text">
                             </div>
                         </div>
-
 
                     </div>
 
@@ -109,14 +108,14 @@
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>لينك البدء : <span class="text-danger">*</span></label>
+                                <label>{{ __('indirect.start_link') }} : <span class="text-danger">*</span></label>
                                 <input class="form-control" name="start_url" type="text">
                             </div>
                         </div>
 
                         <div class="col-md-8">
                             <div class="form-group">
-                                <label>لينك الدخول للطلاب : <span class="text-danger">*</span></label>
+                                <label>{{ __('indirect.join_link') }} : <span class="text-danger">*</span></label>
                                 <input class="form-control" name="join_url" type="text">
                             </div>
                         </div>

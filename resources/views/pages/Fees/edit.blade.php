@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
 @section('title')
-    تعديل رسوم دراسية
+    {{ trans('Fees.edit_fee') }}
 @stop
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
 @section('PageTitle')
-    تعديل رسوم دراسية
+    {{ trans('Fees.edit_fee') }}
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -29,69 +29,66 @@
                         </div>
                     @endif
 
-                    <form action="{{route('Fees.update','test')}}" method="post" autocomplete="off">
+                    <form action="{{ route('Fees.update', 'test') }}" method="post" autocomplete="off">
                         @method('PUT')
                         @csrf
                         <div class="form-row">
                             <div class="form-group col">
-                                <label for="inputEmail4">الاسم باللغة العربية</label>
-                                <input type="text" value="{{$fee->getTranslation('title','ar')}}" name="title_ar" class="form-control">
-                                <input type="hidden" value="{{$fee->id}}" name="id" class="form-control">
+                                <label>{{ trans('Fees.name_ar') }}</label>
+                                <input type="text" value="{{ $fee->getTranslation('title','ar') }}" name="title_ar" class="form-control">
+                                <input type="hidden" value="{{ $fee->id }}" name="id" class="form-control">
                             </div>
 
                             <div class="form-group col">
-                                <label for="inputEmail4">الاسم باللغة الانجليزية</label>
-                                <input type="text" value="{{$fee->getTranslation('title','en')}}" name="title_en" class="form-control">
+                                <label>{{ trans('Fees.name_en') }}</label>
+                                <input type="text" value="{{ $fee->getTranslation('title','en') }}" name="title_en" class="form-control">
                             </div>
-
 
                             <div class="form-group col">
-                                <label for="inputEmail4">المبلغ</label>
-                                <input type="number" value="{{$fee->amount}}" name="amount" class="form-control">
+                                <label>{{ trans('Fees.amount') }}</label>
+                                <input type="number" value="{{ $fee->amount }}" name="amount" class="form-control">
                             </div>
-
                         </div>
 
-
                         <div class="form-row">
-
                             <div class="form-group col">
-                                <label for="inputState">المرحلة الدراسية</label>
+                                <label>{{ trans('Fees.grade') }}</label>
                                 <select class="custom-select mr-sm-2" name="Grade_id">
                                     @foreach($Grades as $Grade)
-                                        <option value="{{ $Grade->id }}" {{$Grade->id == $fee->Grade_id ? 'selected' : ""}}>{{ $Grade->Name }}</option>
+                                        <option value="{{ $Grade->id }}" {{ $Grade->id == $fee->Grade_id ? 'selected' : '' }}>
+                                            {{ $Grade->Name }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
 
                             <div class="form-group col">
-                                <label for="inputZip">الصف الدراسي</label>
+                                <label>{{ trans('Fees.classroom') }}</label>
                                 <select class="custom-select mr-sm-2" name="Classroom_id">
-                                    <option value="{{$fee->Classroom_id}}">{{$fee->classroom->Name_Class}}</option>
+                                    <option value="{{ $fee->Classroom_id }}">{{ $fee->classroom->Name_Class }}</option>
                                 </select>
                             </div>
+
                             <div class="form-group col">
-                                <label for="inputZip">السنة الدراسية</label>
+                                <label>{{ trans('Fees.year') }}</label>
                                 <select class="custom-select mr-sm-2" name="year">
-                                    @php
-                                        $current_year = date("Y")
-                                    @endphp
-                                    @for($year=$current_year; $year<=$current_year +1 ;$year++)
-                                        <option value="{{ $year}}" {{$year == $fee->year ? 'selected' : ' '}}>{{ $year }}</option>
+                                    @php $current_year = date("Y") @endphp
+                                    @for($year = $current_year; $year <= $current_year + 1; $year++)
+                                        <option value="{{ $year }}" {{ $year == $fee->year ? 'selected' : '' }}>
+                                            {{ $year }}
+                                        </option>
                                     @endfor
                                 </select>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="inputAddress">ملاحظات</label>
-                            <textarea class="form-control" name="description" id="exampleFormControlTextarea1"
-                                      rows="4">{{$fee->description}}</textarea>
+                            <label>{{ trans('Fees.description') }}</label>
+                            <textarea class="form-control" name="description" rows="4">{{ $fee->description }}</textarea>
                         </div>
                         <br>
 
-                        <button type="submit" class="btn btn-primary">تاكيد</button>
-
+                        <button type="submit" class="btn btn-primary">{{ trans('Fees.submit') }}</button>
                     </form>
 
                 </div>

@@ -1,19 +1,19 @@
 @extends('layouts.master')
 @section('css')
     @toastr_css
+@endsection
+
 @section('title')
-    تعديل اختبار {{$quizz->name}}
+    {{ trans('Quizzes.title_edit') }} {{ $quizz->name }}
 @stop
-@endsection
+
 @section('page-header')
-    <!-- breadcrumb -->
-@section('PageTitle')
-    تعديل اختبار {{$quizz->name}}
-@stop
-<!-- breadcrumb -->
+    @section('PageTitle')
+        {{ trans('Quizzes.title_edit') }} {{ $quizz->name }}
+    @stop
 @endsection
+
 @section('content')
-    <!-- row -->
     <div class="row">
         <div class="col-md-12 mb-30">
             <div class="card card-statistics h-100">
@@ -27,35 +27,37 @@
                             </button>
                         </div>
                     @endif
+
                     <div class="col-xs-12">
                         <div class="col-md-12">
                             <br>
-                            <form action="{{route('Quizzes.update','test')}}" method="post">
+                            <form action="{{ route('Quizzes.update', 'test') }}" method="post">
                                 @csrf
                                 @method('PUT')
-                                <div class="form-row">
 
+                                <div class="form-row">
                                     <div class="col">
-                                        <label for="title">اسم الاختبار باللغة العربية</label>
-                                        <input type="text" name="Name_ar" value="{{$quizz->getTranslation('name','ar')}}" class="form-control">
-                                        <input type="hidden" name="id" value="{{$quizz->id}}">
+                                        <label for="title">{{ trans('Quizzes.quiz_name_ar') }}</label>
+                                        <input type="text" name="Name_ar" value="{{ $quizz->getTranslation('name','ar') }}" class="form-control">
+                                        <input type="hidden" name="id" value="{{ $quizz->id }}">
                                     </div>
 
                                     <div class="col">
-                                        <label for="title">اسم الاختبار باللغة الانجليزية</label>
-                                        <input type="text" name="Name_en" value="{{$quizz->getTranslation('name','en')}}" class="form-control">
+                                        <label for="title">{{ trans('Quizzes.quiz_name_en') }}</label>
+                                        <input type="text" name="Name_en" value="{{ $quizz->getTranslation('name','en') }}" class="form-control">
                                     </div>
                                 </div>
                                 <br>
 
                                 <div class="form-row">
-
                                     <div class="col">
                                         <div class="form-group">
-                                            <label for="Grade_id">المادة الدراسية : <span class="text-danger">*</span></label>
+                                            <label for="subject_id">{{ trans('Quizzes.subject') }} : <span class="text-danger">*</span></label>
                                             <select class="custom-select mr-sm-2" name="subject_id">
                                                 @foreach($subjects as $subject)
-                                                    <option value="{{ $subject->id }}" {{$subject->id == $quizz->subject_id ? "selected":""}}>{{ $subject->name }}</option>
+                                                    <option value="{{ $subject->id }}" {{ $subject->id == $quizz->subject_id ? 'selected' : '' }}>
+                                                        {{ $subject->name }}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -63,25 +65,27 @@
 
                                     <div class="col">
                                         <div class="form-group">
-                                            <label for="Grade_id">اسم المعلم : <span class="text-danger">*</span></label>
+                                            <label for="teacher_id">{{ trans('Quizzes.teacher') }} : <span class="text-danger">*</span></label>
                                             <select class="custom-select mr-sm-2" name="teacher_id">
                                                 @foreach($teachers as $teacher)
-                                                    <option  value="{{ $teacher->id }}" {{$teacher->id == $quizz->teacher_id ? "selected":""}}>{{ $teacher->Name }}</option>
+                                                    <option value="{{ $teacher->id }}" {{ $teacher->id == $quizz->teacher_id ? 'selected' : '' }}>
+                                                        {{ $teacher->Name }}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
-
                                 </div>
 
                                 <div class="form-row">
-
                                     <div class="col">
                                         <div class="form-group">
-                                            <label for="Grade_id">{{trans('Students_trans.Grade')}} : <span class="text-danger">*</span></label>
+                                            <label for="Grade_id">{{ trans('Students_trans.Grade') }} : <span class="text-danger">*</span></label>
                                             <select class="custom-select mr-sm-2" name="Grade_id">
                                                 @foreach($grades as $grade)
-                                                    <option  value="{{ $grade->id }}" {{$grade->id == $quizz->grade_id ? "selected":""}}>{{ $grade->Name }}</option>
+                                                    <option value="{{ $grade->id }}" {{ $grade->id == $quizz->grade_id ? 'selected' : '' }}>
+                                                        {{ $grade->Name }}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -89,34 +93,40 @@
 
                                     <div class="col">
                                         <div class="form-group">
-                                            <label for="Classroom_id">{{trans('Students_trans.classrooms')}} : <span class="text-danger">*</span></label>
+                                            <label for="Classroom_id">{{ trans('Students_trans.classrooms') }} : <span class="text-danger">*</span></label>
                                             <select class="custom-select mr-sm-2" name="Classroom_id">
-                                                <option value="{{$quizz->classroom_id}}">{{$quizz->classroom->Name_Class}}</option>                                            </select>
+                                                <option value="{{ $quizz->classroom_id }}">{{ $quizz->classroom->Name_Class }}</option>
+                                            </select>
                                         </div>
                                     </div>
 
                                     <div class="col">
                                         <div class="form-group">
-                                            <label for="section_id">{{trans('Students_trans.section')}} : </label>
+                                            <label for="section_id">{{ trans('Students_trans.section') }}</label>
                                             <select class="custom-select mr-sm-2" name="section_id">
-                                                <option value="{{$quizz->section_id}}">{{$quizz->section->Name_Section}}</option>
+                                                <option value="{{ $quizz->section_id }}">{{ $quizz->section->Name_Section }}</option>
                                             </select>
                                         </div>
                                     </div>
-                                </div><br>
-                                <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">تاكيد البيانات</button>
+                                </div>
+                                <br>
+                                <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">
+                                    {{ trans('Quizzes.save_edit') }}
+                                </button>
                             </form>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
-    <!-- row closed -->
 @endsection
+
 @section('js')
     @toastr_js
     @toastr_render
+
     <script>
         $(document).ready(function () {
             $('select[name="Grade_id"]').on('change', function () {
