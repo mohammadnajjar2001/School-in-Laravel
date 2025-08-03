@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
 @section('title')
-    معالجات الرسوم الدراسية
+    {{ __('messages.processing_fees') }}
 @stop
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
 @section('PageTitle')
-  معالجات الرسوم الدراسية
+    {{ __('messages.processing_fees') }}
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -22,32 +22,42 @@
                         <div class="card card-statistics h-100">
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table id="datatable" class="table  table-hover table-sm table-bordered p-0"
+                                    <table id="datatable" class="table table-hover table-sm table-bordered p-0"
                                            data-page-length="50"
                                            style="text-align: center">
                                         <thead>
                                         <tr class="alert-success">
                                             <th>#</th>
-                                            <th>الاسم</th>
-                                            <th>المبلغ</th>
-                                            <th>البيان</th>
-                                            <th>العمليات</th>
+                                            <th>{{ __('messages.name') }}</th>
+                                            <th>{{ __('messages.amount') }}</th>
+                                            <th>{{ __('messages.description') }}</th>
+                                            <th>{{ __('messages.actions') }}</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($ProcessingFees as $ProcessingFee)
                                             <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{$ProcessingFee->student->name}}</td>
-                                            <td>{{ number_format($ProcessingFee->amount, 2) }}</td>
-                                            <td>{{$ProcessingFee->description}}</td>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $ProcessingFee->student->name }}</td>
+                                                <td>{{ number_format($ProcessingFee->amount, 2) }}</td>
+                                                <td>{{ $ProcessingFee->description }}</td>
                                                 <td>
-                                                    <a href="{{route('ProcessingFee.edit',$ProcessingFee->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
-                                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_receipt{{$ProcessingFee->id}}" ><i class="fa fa-trash"></i></button>
+                                                    <a href="{{ route('ProcessingFee.edit', $ProcessingFee->id) }}"
+                                                       class="btn btn-info btn-sm" role="button" aria-pressed="true"
+                                                       title="{{ __('messages.edit') }}">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+                                                    <button type="button" class="btn btn-danger btn-sm"
+                                                            data-toggle="modal"
+                                                            data-target="#Delete_receipt{{ $ProcessingFee->id }}"
+                                                            title="{{ __('messages.delete') }}">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
                                                 </td>
                                             </tr>
                                         @include('pages.ProcessingFee.Delete')
                                         @endforeach
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>

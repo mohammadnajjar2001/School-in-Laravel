@@ -60,7 +60,18 @@ return [
     'Settings' => 'Settings',
     'Users' => 'Users',
     'Copyright' => 'Copyright',
-    'Name_Programer' => 'SamirGamal MoraSoft All Rights Reserved'
+    'Name_Programer' => 'SamirGamal MoraSoft All Rights Reserved',
+    'Dashboard' => 'Control Panel',
+    'Programname' => 'Program Name',
+    'List_section' => 'Section List',
+    'Students' => 'Students',
+    'Quizzes' => 'Questions',
+    'List_Questions' => 'Question List',
+    'Onlineclasses' => 'Online Classes',
+    'Online_Classes_With_Zoom' => 'Online Classes with Zoom',
+    'Reports' => 'Reports',
+    'Attendance_Report' => 'Attendance Report',
+    'Profile' => 'Profile',
 
 
 ];

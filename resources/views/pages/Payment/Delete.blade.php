@@ -3,20 +3,20 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">حذف سند صرف</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">{{ trans('Students_trans.delete_payment_voucher') }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{ trans('Students_trans.Close') }}">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{route('Payment_students.destroy','test')}}" method="post">
+                <form action="{{ route('Payment_students.destroy','test') }}" method="post">
                     @csrf
                     @method('DELETE')
-                    <input type="hidden" name="id" value="{{$payment_student->id}}">
-                    <h5 style="font-family: 'Cairo', sans-serif;">هل انت متاكد مع عملية الحذف ؟</h5>
+                    <input type="hidden" name="id" value="{{ $payment_student->id }}">
+                    <h5 style="font-family: 'Cairo', sans-serif;">{{ trans('Students_trans.are_you_sure_delete') }}</h5>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('Students_trans.Close')}}</button>
-                        <button  class="btn btn-danger">{{trans('Students_trans.submit')}}</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ trans('Students_trans.Close') }}</button>
+                        <button class="btn btn-danger">{{ trans('Students_trans.submit') }}</button>
                     </div>
                 </form>
             </div>

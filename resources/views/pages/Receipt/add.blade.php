@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
 @section('title')
-   سند قبض
+   {{ __('messages.receipt') }}
 @stop
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
 @section('PageTitle')
-سند قبض {{$student->name}}
+    {{ __('messages.receipt_for') }} {{$student->name}}
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -29,28 +29,31 @@
                         </div>
                     @endif
 
-                        <form method="post"  action="{{ route('receipt_students.store') }}" autocomplete="off">
-                            @csrf
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>المبلغ : <span class="text-danger">*</span></label>
-                                        <input  class="form-control" name="Debit" type="number" >
-                                        <input  type="hidden" name="student_id"  value="{{$student->id}}" class="form-control">
-                                    </div>
+                    <form method="post" action="{{ route('receipt_students.store') }}" autocomplete="off">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>{{ __('messages.amount') }} : <span class="text-danger">*</span></label>
+                                    <input class="form-control" name="Debit" type="number">
+                                    <input type="hidden" name="student_id" value="{{ $student->id }}" class="form-control">
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>البيان : <span class="text-danger">*</span></label>
-                                        <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                    </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>{{ __('messages.description') }} : <span class="text-danger">*</span></label>
+                                    <textarea class="form-control" name="description" rows="3"></textarea>
                                 </div>
                             </div>
-                            <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">{{trans('Students_trans.submit')}}</button>
-                        </form>
+                        </div>
+
+                        <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">
+                            {{ __('messages.submit') }}
+                        </button>
+                    </form>
 
                 </div>
             </div>
@@ -61,5 +64,4 @@
 @section('js')
     @toastr_js
     @toastr_render
-
 @endsection
