@@ -56,7 +56,19 @@ return [
     'Settings' => 'الاعدادات',
     'Users' => 'المستخدمين',
     'Copyright' => 'جميع الحقوق محفوظة ',
-    'Name_Programer' => 'سمير جمال مورا سوفت'
+    'Name_Programer' => 'سمير جمال مورا سوفت',
+    'Dashboard' => 'لوحة التحكم',
+    'Programname' => 'اسم البرنامج',
+    'List_section' => 'قائمة الاقسام',
+    'Students' => 'الطلاب',
+    'Quizzes' => 'الاختبارات',
+    'List_Quizzes' => 'قائمة الاختبارات',
+    'List_Questions' => 'قائمة الاسئلة',
+    'Onlineclasses' => 'حصص اونلاين',
+    'Online_Classes_With_Zoom' => 'حصص اونلاين مع زوم',
+    'Reports' => 'التقارير',
+    'Attendance_Report' => 'تقرير الحضور والغياب',
+    'Profile' => 'الملف الشخصي',
 
 
 ];

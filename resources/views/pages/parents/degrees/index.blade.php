@@ -1,16 +1,18 @@
 @extends('layouts.master')
 @section('css')
     @section('title')
-        قائمة نتائج الاختبارات
+        {{ trans('results.title') }}
     @stop
 @endsection
+
 @section('page-header')
     <!-- breadcrumb -->
     @section('PageTitle')
-        قائمة نتائج الاختبارات
+        {{ trans('results.title') }}
     @stop
     <!-- breadcrumb -->
 @endsection
+
 @section('content')
     <!-- row -->
     <div class="row">
@@ -27,20 +29,20 @@
                                         <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>اسم الطالب</th>
-                                            <th>اسم الاختبار</th>
-                                            <th>الدرجة</th>
-                                            <th>تاريخ اجراء الاختبار</th>
+                                            <th>{{ trans('results.student_name') }}</th>
+                                            <th>{{ trans('results.quiz_name') }}</th>
+                                            <th>{{ trans('results.score') }}</th>
+                                            <th>{{ trans('results.test_date') }}</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($degrees as $degree)
                                             <tr>
-                                                <td>{{ $loop->iteration}}</td>
-                                                <td>{{$degree->student->name}}</td>
-                                                <td>{{$degree->quizze->name}}</td>
-                                                <td>{{$degree->score}}</td>
-                                                <td>{{$degree->date}}</td>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $degree->student->name }}</td>
+                                                <td>{{ $degree->quizze->name }}</td>
+                                                <td>{{ $degree->score }}</td>
+                                                <td>{{ $degree->date }}</td>
                                             </tr>
                                         @endforeach
                                     </table>
@@ -54,7 +56,6 @@
     </div>
     <!-- row closed -->
 @endsection
+
 @section('js')
-
 @endsection
-

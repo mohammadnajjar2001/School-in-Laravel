@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
 @section('title')
-   استبعاد رسوم
+   {{ __('Students_trans.exclude_fees') }}
 @stop
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
 @section('PageTitle')
-    استبعاد رسوم{{$student->name}}
+    {{ __('Students_trans.exclude_fees') }} {{$student->name}}
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -34,16 +34,18 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>المبلغ : <span class="text-danger">*</span></label>
-                                    <input  class="form-control" name="Debit" type="number" >
-                                    <input  type="hidden" name="student_id"  value="{{$student->id}}" class="form-control">
+                                    <label>{{ __('Students_trans.amount') }} : <span class="text-danger">*</span></label>
+                                    <input class="form-control" name="Debit" type="number">
+                                    <input type="hidden" name="student_id" value="{{$student->id}}" class="form-control">
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>رصيد الطالب : </label>
-                                    <input  class="form-control" name="final_balance" value="{{ number_format($student->student_account->sum('Debit') - $student->student_account->sum('credit'), 2) }}" type="text" readonly>
+                                    <label>{{ __('Students_trans.student_balance') }} :</label>
+                                    <input class="form-control" name="final_balance"
+                                           value="{{ number_format($student->student_account->sum('Debit') - $student->student_account->sum('credit'), 2) }}"
+                                           type="text" readonly>
                                 </div>
                             </div>
                         </div>
@@ -51,12 +53,14 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>البيان : <span class="text-danger">*</span></label>
-                                    <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <label>{{ __('Students_trans.description') }} : <span class="text-danger">*</span></label>
+                                    <textarea class="form-control" name="description" rows="3"></textarea>
                                 </div>
                             </div>
                         </div>
-                        <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">{{trans('Students_trans.submit')}}</button>
+                        <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">
+                            {{ __('Students_trans.submit') }}
+                        </button>
                     </form>
 
                 </div>
@@ -68,5 +72,4 @@
 @section('js')
     @toastr_js
     @toastr_render
-
 @endsection

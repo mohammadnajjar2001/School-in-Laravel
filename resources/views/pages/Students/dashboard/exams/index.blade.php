@@ -1,17 +1,16 @@
-
 @extends('layouts.master')
 @section('css')
     @toastr_css
-    @section('title')
-        قائمة الاختبارات
-    @stop
+@section('title')
+    {{ trans('student2.quizzes_list') }}
+@stop
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
-    @section('PageTitle')
-        قائمة الاختبارات
-    @stop
-    <!-- breadcrumb -->
+@section('PageTitle')
+    {{ trans('student2.quizzes_list') }}
+@stop
+<!-- breadcrumb -->
 @endsection
 @section('content')
     <!-- row -->
@@ -29,9 +28,9 @@
                                         <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>المادة الدراسية</th>
-                                            <th>اسم الاختبار</th>
-                                            <th>دخول / درجة الاختبار</th>
+                                            <th>{{ trans('student2.subject') }}</th>
+                                            <th>{{ trans('student2.quiz_name') }}</th>
+                                            <th>{{ trans('student2.enter_or_score') }}</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -52,6 +51,7 @@
                                                 </td>
                                             </tr>
                                         @endforeach
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>
@@ -67,10 +67,9 @@
     @toastr_js
     @toastr_render
 
-        <script>
-            function alertAbuse() {
-                alert("برجاء عدم إعادة تحميل الصفحة بعد دخول الاختبار - في حال تم تنفيذ ذلك سيتم الغاء الاختبار بشكل اوتوماتيك ");
-            }
-        </script>
-
+    <script>
+        function alertAbuse() {
+            alert("{{ trans('student2.alert_reload_warning') }}");
+        }
+    </script>
 @endsection

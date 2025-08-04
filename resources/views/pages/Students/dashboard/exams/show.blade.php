@@ -3,13 +3,13 @@
     @toastr_css
     @livewireStyles
     @section('title')
-        إجراء اختبار
+        {{ trans('student2.take_quiz') }}
     @stop
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
     @section('PageTitle')
-        إجراء اختبار
+        {{ trans('student2.take_quiz') }}
     @stop
     <!-- breadcrumb -->
 @endsection
@@ -23,4 +23,3 @@
     @toastr_render
     @livewireScripts
 @endsection
-
