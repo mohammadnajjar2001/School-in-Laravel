@@ -72,6 +72,10 @@ return [
     'Reports' => 'Reports',
     'Attendance_Report' => 'Attendance Report',
     'Profile' => 'Profile',
+    'EnterEventTitle'   => 'Enter event title',
+    'EventAddedSuccess' => 'Event added successfully',
+    'PleaseEnterTitle'  => 'Please enter the event title',
+    'ShowData'          => 'Show Data',
 
 
 ];

@@ -69,6 +69,10 @@ return [
     'Reports' => 'التقارير',
     'Attendance_Report' => 'تقرير الحضور والغياب',
     'Profile' => 'الملف الشخصي',
+    'EnterEventTitle'   => 'ادخل عنوان الحدث',
+    'EventAddedSuccess' => 'تم اضافة الحدث بنجاح',
+    'PleaseEnterTitle'  => 'من فضلك ادخل عنوان الحدث',
+    'ShowData'          => 'عرض البيانات',
 
 
 ];
