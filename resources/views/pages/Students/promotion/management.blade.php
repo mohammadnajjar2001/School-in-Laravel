@@ -23,7 +23,7 @@
                             <div class="card-body">
 
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Delete_all">
-                                   تراجع الكل
+    {{ trans('main_trans.RevertAll') }}
                                 </button>
                                 <br><br>
 
@@ -34,16 +34,17 @@
                                            style="text-align: center">
                                         <thead>
                                         <tr>
+                                        
                                             <th class="alert-info">#</th>
-                                            <th class="alert-info">{{trans('Students_trans.name')}}</th>
-                                            <th class="alert-danger">المرحلة الدراسية السابقة</th>
-                                            <th class="alert-danger">السنة الدراسية</th>
-                                            <th class="alert-danger">الصف الدراسي السابق</th>
-                                            <th class="alert-danger">القسم الدراسي السابق</th>
-                                            <th class="alert-success">المرحلة الدراسية الحالي</th>
-                                            <th class="alert-success">السنة الدراسية الحالية</th>
-                                            <th class="alert-success">الصف الدراسي الحالي</th>
-                                            <th class="alert-success">القسم الدراسي الحالي</th>
+                                            <th class="alert-info">{{ trans('Students_trans.name') }}</th>
+                                            <th class="alert-danger">{{ trans('main_trans.PreviousGrade') }}</th>
+                                            <th class="alert-danger">{{ trans('main_trans.AcademicYear') }}</th>
+                                            <th class="alert-danger">{{ trans('main_trans.PreviousClass') }}</th>
+                                            <th class="alert-danger">{{ trans('main_trans.PreviousSection') }}</th>
+                                            <th class="alert-success">{{ trans('main_trans.CurrentGrade') }}</th>
+                                            <th class="alert-success">{{ trans('main_trans.CurrentYear') }}</th>
+                                            <th class="alert-success">{{ trans('main_trans.CurrentClass') }}</th>
+                                            <th class="alert-success">{{ trans('main_trans.CurrentSection') }}</th>
                                             <th>{{trans('Students_trans.Processes')}}</th>
                                         </tr>
                                         </thead>
@@ -62,8 +63,10 @@
                                                 <td>{{$promotion->t_section->Name_Section}}</td>
                                                 <td>
 
-                                                    <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#Delete_one{{$promotion->id}}">ارجاع الطالب</button>
-                                                    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#">تخرج الطالب</button>
+                                                    <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#Delete_one{{$promotion->id}}">
+                                                        {{ trans('main_trans.ReturnStudent') }}                                                    </button>
+                                                    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#">
+                                                        {{ trans('main_trans.GraduateStudent') }}                                                    </button>
                                                 </td>
                                             </tr>
                                         @include('pages.Students.promotion.Delete_all')

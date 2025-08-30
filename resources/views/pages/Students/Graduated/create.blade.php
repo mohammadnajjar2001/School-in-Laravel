@@ -58,7 +58,8 @@
 
                         </div>
 
-                        <button type="submit" class="btn btn-primary">تاكيد</button>
+                        <button type="submit" class="btn btn-primary">    {{ trans('main_trans.Confirm') }}
+</button>
                     </form>
 
                 </div>
