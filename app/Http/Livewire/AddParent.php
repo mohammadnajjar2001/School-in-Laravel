@@ -166,11 +166,12 @@ class AddParent extends Component
 
     public function edit($id)
     {
+        
         $this->show_table = false;
         $this->updateMode = true;
         $My_Parent = My_Parent::where('id',$id)->first();
         $this->Parent_id = $id;
-        $this->Email = $My_Parent->Email;
+        $this->Email = $My_Parent->email;
         $this->Password = $My_Parent->Password;
         $this->Name_Father = $My_Parent->getTranslation('Name_Father', 'ar');
         $this->Name_Father_en = $My_Parent->getTranslation('Name_Father', 'en');
