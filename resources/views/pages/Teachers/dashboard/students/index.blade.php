@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
 @section('title')
-    قائمة الحضور والغياب للطلاب
+    {{ trans('main_trans.StudentsAttendanceList') }}
 @stop
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
 @section('PageTitle')
-    قائمة الحضور والغياب للطلاب
+    {{ trans('main_trans.StudentsAttendanceList') }}
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -33,7 +33,7 @@
         </div>
     @endif
 
-    <h5 style="font-family: 'Cairo', sans-serif;color: red"> تاريخ اليوم : {{ date('Y-m-d') }}</h5>
+    <h5 style="font-family: 'Cairo', sans-serif;color: red">  {{ trans('main_trans.TodayDate') }} : {{ date('Y-m-d') }}</h5>
     <form method="post" action="{{ route('attendance') }}" autocomplete="off">
 
         @csrf
@@ -48,7 +48,7 @@
                 <th class="alert-success">{{ trans('Students_trans.Grade') }}</th>
                 <th class="alert-success">{{ trans('Students_trans.classrooms') }}</th>
                 <th class="alert-success">{{ trans('Students_trans.section') }}</th>
-                <th class="alert-success">الحضور والغياب</th>
+                <th class="alert-success">{{ trans('main_trans.Attendance') }}</th>
             </tr>
             </thead>
             <tbody>

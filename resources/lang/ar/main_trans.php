@@ -69,6 +69,48 @@ return [
     'Reports' => 'التقارير',
     'Attendance_Report' => 'تقرير الحضور والغياب',
     'Profile' => 'الملف الشخصي',
+    'EnterEventTitle'   => 'ادخل عنوان الحدث',
+    'EventAddedSuccess' => 'تم اضافة الحدث بنجاح',
+    'PleaseEnterTitle'  => 'من فضلك ادخل عنوان الحدث',
+    'ShowData'          => 'عرض البيانات',
+    'StudentsAttendanceList' => 'قائمة الحضور والغياب للطلاب',
+    'NewGrade'     => 'المرحلة الدراسية الجديدة',
+    'OldGrade'     => 'المرحلة الدراسية القديمة',
+    'Confirm' => 'تأكيد',
+    'ReturnStudent'       => 'ارجاع الطالب',
+    'GraduateStudent'     => 'تخرج الطالب',
+    'PreviousGrade'       => 'المرحلة الدراسية السابقة',
+    'AcademicYear'        => 'السنة الدراسية',
+    'PreviousClass'       => 'الصف الدراسي السابق',
+    'PreviousSection'     => 'القسم الدراسي السابق',
+    'CurrentGrade'        => 'المرحلة الدراسية الحالية',
+    'CurrentYear'         => 'السنة الدراسية الحالية',
+    'CurrentClass'        => 'الصف الدراسي الحالي',
+    'CurrentSection'      => 'القسم الدراسي الحالي',
+    'RevertAll'           => 'تراجع الكل',
+    'StudentsAttendanceList' => 'قائمة الحضور والغياب للطلاب',
+    'TodayDate' => 'تاريخ اليوم',
+    'Attendance' => 'الحضور والغياب',
+    'List_Quizzes' => 'قائمة الاختبارات',
+    'JoinNow'            => 'انضم الان',
+    'Number'             => '#',
+    'Grade'              => 'المرحلة',
+    'Class'              => 'الصف',
+    'Section'            => 'القسم',
+    'Teacher'            => 'المعلم',
+    'LessonTitle'        => 'عنوان الحصة',
+    'StartDate'          => 'تاريخ البداية',
+    'LessonTime'         => 'وقت الحصة',
+    'LessonLink'         => 'رابط الحصة',
+    'Actions'            => 'العمليات',
+    'AddOfflineLesson'   => 'اضافة حصة اوفلاين جديدة',
+    'OnlineLessons' => 'حصص أونلاين',
+
+
+
+
+
+
 
 
 ];

@@ -72,6 +72,49 @@ return [
     'Reports' => 'Reports',
     'Attendance_Report' => 'Attendance Report',
     'Profile' => 'Profile',
+    'EnterEventTitle'   => 'Enter event title',
+    'EventAddedSuccess' => 'Event added successfully',
+    'PleaseEnterTitle'  => 'Please enter the event title',
+    'ShowData'          => 'Show Data',
+    'StudentsAttendanceList' => 'Students Attendance List',
+    'NewGrade'     => 'New Grade Level',
+    'OldGrade'     => 'Old Grade Level',
+    'Confirm' => 'Confirm',
+
+    'ReturnStudent'       => 'Return Student',
+    'GraduateStudent'     => 'Graduate Student',
+    'PreviousGrade'       => 'Previous Grade Level',
+    'AcademicYear'        => 'Academic Year',
+    'PreviousClass'       => 'Previous Class',
+    'PreviousSection'     => 'Previous Section',
+    'CurrentGrade'        => 'Current Grade Level',
+    'CurrentYear'         => 'Current Year',
+    'CurrentClass'        => 'Current Class',
+    'CurrentSection'      => 'Current Section',
+    'RevertAll'           => 'Revert All',
+    'StudentsAttendanceList' => 'Students Attendance List',
+    'TodayDate' => 'Today Date',
+    'Attendance' => 'Attendance',
+    'List_Quizzes' => 'List_Quizzes',
+    'JoinNow'            => 'Join Now',
+    'Number'             => '#',
+    'Grade'              => 'Grade',
+    'Class'              => 'Class',
+    'Section'            => 'Section',
+    'Teacher'            => 'Teacher',
+    'LessonTitle'        => 'Lesson Title',
+    'StartDate'          => 'Start Date',
+    'LessonTime'         => 'Lesson Time',
+    'LessonLink'         => 'Lesson Link',
+    'Actions'            => 'Actions',
+    'AddOfflineLesson'   => 'Add New Offline Lesson',
+    'OnlineLessons' => 'Online Lessons',
+
+
+
+
+
+
 
 
 ];
