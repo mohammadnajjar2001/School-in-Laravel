@@ -166,6 +166,7 @@ class AddParent extends Component
 
     public function edit($id)
     {
+        
         $this->show_table = false;
         $this->updateMode = true;
         $My_Parent = My_Parent::where('id',$id)->first();
