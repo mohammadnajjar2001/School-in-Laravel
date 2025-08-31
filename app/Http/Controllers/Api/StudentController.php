@@ -10,31 +10,28 @@ use App\Models\Subject;
 
 class StudentController extends Controller
 {
-    public function getBalance()
+    public function getBalanceById($id)
     {
-        $studentId = auth()->user()->id;
-
-        // حساب الرصيد
-        $balance = \App\Models\StudentAccount::where('student_id', $studentId)
+        // جلب الرصيد حسب id الطالب
+        $balance = \App\Models\StudentAccount::where('student_id', $id)
             ->selectRaw('SUM(Debit) - SUM(Credit) as remaining')
             ->value('remaining');
 
-        // إذا الرصيد null (يعني ما في سجلات للطالب)
         if (is_null($balance)) {
             $balance = 0;
         }
 
         // تجهيز الرسالة التوضيحية
         if ($balance > 0) {
-            $status = "⚠️ يتوجب عليك دفع {$balance} $ للمدرسة";
+            $status = "⚠️ يتوجب على الطالب دفع {$balance} $ للمدرسة";
         } elseif ($balance < 0) {
-            $status = "✅ لقد سددت كامل القسط، ولديك رصيد زائد بقيمة " . abs($balance) . " $";
+            $status = "✅ الطالب سدد كامل القسط، ولديه رصيد زائد بقيمة " . abs($balance) . " $";
         } else {
-            $status = "🟡 حسابك مسدد بالكامل";
+            $status = "🟡 الطالب مسدد بالكامل";
         }
 
         return response()->json([
-            'student_id' => $studentId,
+            'student_id' => $id,
             'balance' => $balance,
             'status' => $status
         ]);
