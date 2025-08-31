@@ -69,6 +69,7 @@ return [
     'submit' => 'تأكيد',
     'edit_payment_voucher' => 'تعديل سند صرف',
     'amount' => 'المبلغ',
+    'balance' => 'الرصيد الحالي',
     'description' => 'البيان',
     'submit' => 'تأكيد',
     'delete_payment_voucher' => 'حذف سند صرف',

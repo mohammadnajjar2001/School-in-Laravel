@@ -20,6 +20,7 @@ return [
     'parent' => 'parent',
     'academic_year' => 'academic year',
     'Processes' => 'Processes',
+    'balance' => 'balance',
     'submit' => 'submit',
     'Close' => 'Close',
     'Attachments' => 'Attachments',

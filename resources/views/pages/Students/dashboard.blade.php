@@ -3,6 +3,7 @@
 @section('title')
     {{ trans('main_trans.Main_title') }}
 @stop
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,9 +38,34 @@
         Main content -->
         <!-- main-content -->
         <div class="content-wrapper">
-            <div class="page-title" >
+            <div class="page-title">
                 <div class="row">
-                    <div class="col-sm-6" >
+                    <div class="col-sm-6">
+                        @php
+                            $studentId = auth()->user()->id;
+                            $balance = \App\Models\StudentAccount::where('student_id', $studentId)
+                                ->selectRaw('SUM(Debit) - SUM(Credit) as remaining')
+                                ->value('remaining');
+                        @endphp
+                        @if ($balance > 0)
+                            <div class="alert alert-danger" role="alert">
+                                <strong>⚠️ انتبه!</strong>
+                                يتوجب عليك دفع <strong>{{ $balance }} $</strong> لإتمام سداد القسط.
+                            </div>
+                        @elseif ($balance < 0)
+                            <div class="alert alert-success" role="alert">
+                                <strong>✅ تهانينا!</strong>
+                                لقد سددت كامل القسط، ويوجد لديك رصيد زائد بقيمة <strong>{{ abs($balance) }} $</strong>.
+                            </div>
+                        @else
+                            <div class="alert alert-info" role="alert">
+                                <strong>🟡 تنبيه:</strong>
+                                لقد سددت كامل القسط، ولا يوجد أي مبلغ متبقي عليك.
+                            </div>
+                        @endif
+
+
+
                         <h4 class="mb-0" style="font-family: 'Cairo', sans-serif">
                             {{ trans('student2.welcome') }} : {{ auth()->user()->name }}
                         </h4>
