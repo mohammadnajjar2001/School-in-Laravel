@@ -10,6 +10,35 @@ use App\Models\Subject;
 
 class StudentController extends Controller
 {
+    public function getBalance()
+    {
+        $studentId = auth()->user()->id;
+
+        // حساب الرصيد
+        $balance = \App\Models\StudentAccount::where('student_id', $studentId)
+            ->selectRaw('SUM(Debit) - SUM(Credit) as remaining')
+            ->value('remaining');
+
+        // إذا الرصيد null (يعني ما في سجلات للطالب)
+        if (is_null($balance)) {
+            $balance = 0;
+        }
+
+        // تجهيز الرسالة التوضيحية
+        if ($balance > 0) {
+            $status = "⚠️ يتوجب عليك دفع {$balance} $ للمدرسة";
+        } elseif ($balance < 0) {
+            $status = "✅ لقد سددت كامل القسط، ولديك رصيد زائد بقيمة " . abs($balance) . " $";
+        } else {
+            $status = "🟡 حسابك مسدد بالكامل";
+        }
+
+        return response()->json([
+            'student_id' => $studentId,
+            'balance' => $balance,
+            'status' => $status
+        ]);
+    }
     public function index(Request $request)
     {
         // نفترض أنك تستخدم Laravel Sanctum و المستخدم هو طالب

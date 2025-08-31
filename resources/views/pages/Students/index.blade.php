@@ -31,6 +31,7 @@
                                             <th>#</th>
                                             <th>{{ trans('Students_trans.name') }}</th>
                                             <th>{{ trans('Students_trans.email') }}</th>
+                                            <th>{{ trans('Students_trans.balance') }}</th>
                                             <th>{{ trans('Students_trans.gender') }}</th>
                                             <th>{{ trans('Students_trans.Grade') }}</th>
                                             <th>{{ trans('Students_trans.classrooms') }}</th>
@@ -44,6 +45,18 @@
                                                 <td>{{ $loop->index + 1 }}</td>
                                                 <td>{{ $student->name }}</td>
                                                 <td>{{ $student->email }}</td>
+                                                @php
+                                                    $studentId = $student->id;
+                                                    $balance = \App\Models\StudentAccount::where(
+                                                        'student_id',
+                                                        $studentId,
+                                                    )
+                                                        ->selectRaw('SUM(Debit) - SUM(Credit) as remaining')
+                                                        ->value('remaining');
+
+                                                @endphp
+                                                <td>{{ $balance ?? "0.00"}}</td>
+                                                <td>{{ $student->gender->Name }}</td>
                                                 <td>{{ $student->gender->Name }}</td>
                                                 <td>{{ $student->grade->Name }}</td>
                                                 <td>{{ $student->classroom->Name_Class }}</td>

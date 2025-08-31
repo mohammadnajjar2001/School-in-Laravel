@@ -25,6 +25,7 @@ Route::get('/test', [LoginController::class, 'test']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/student/events', [EventController::class, 'index']);
+    Route::get('/student/balance', [StudentController::class, 'getBalance']);
     Route::get('/student/quizzes', [QuizzeController::class, 'index']);
     Route::get('/student/degree', [QuizzeController::class, 'index1']);
     Route::put('/student/password', [StudentController::class, 'updatePassword']);
@@ -43,10 +44,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/parent/attendance', [ParentController::class, 'attendanceSearch']);
     Route::get('/parent/fee-invoices', [ParentController::class, 'feeInvoices']);
     Route::get('/parent/student/{id}/receipts', [ParentController::class, 'receiptStudent']);
-
-
-
-
 });
 
 // مسار تسجيل خروج الطالب
