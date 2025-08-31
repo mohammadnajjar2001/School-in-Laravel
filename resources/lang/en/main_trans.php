@@ -109,6 +109,7 @@ return [
     'Actions'            => 'Actions',
     'AddOfflineLesson'   => 'Add New Offline Lesson',
     'OnlineLessons' => 'Online Lessons',
+    'AddOnlineLesson' => 'AddOnlineLesson',
 
 
 
