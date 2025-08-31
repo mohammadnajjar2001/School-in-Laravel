@@ -18,7 +18,7 @@ class StudentController extends Controller
             ->value('remaining');
 
         if (is_null($balance)) {
-            $balance = 0;
+            $balance =   number_format(0, 2);
         }
 
         // تجهيز الرسالة التوضيحية
