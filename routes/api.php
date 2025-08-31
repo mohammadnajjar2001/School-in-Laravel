@@ -25,7 +25,7 @@ Route::get('/test', [LoginController::class, 'test']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/student/events', [EventController::class, 'index']);
-    Route::get('/student/balance', [StudentController::class, 'getBalance']);
+    Route::get('/student/{id}/balance', [StudentController::class, 'getBalanceById']);
     Route::get('/student/quizzes', [QuizzeController::class, 'index']);
     Route::get('/student/degree', [QuizzeController::class, 'index1']);
     Route::put('/student/password', [StudentController::class, 'updatePassword']);
