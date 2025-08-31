@@ -37,6 +37,7 @@
                                             <th>{{ trans('Students_trans.classrooms') }}</th>
                                             <th>{{ trans('Students_trans.section') }}</th>
                                             <th>{{ trans('Students_trans.Processes') }}</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -56,7 +57,7 @@
 
                                                 @endphp
                                                 <td>{{ $balance ?? "0.00"}}</td>
-                                                <td>{{ $student->gender->Name }}</td>
+                                                {{-- <td>{{ $student->gender->Name }}</td> --}}
                                                 <td>{{ $student->gender->Name }}</td>
                                                 <td>{{ $student->grade->Name }}</td>
                                                 <td>{{ $student->classroom->Name_Class }}</td>
@@ -90,7 +91,7 @@
                                                                     class="fas fa-money-bill-alt"></i>&nbsp;
                                                                 {{ __('Students_trans.add_receipt') }}
                                                             </a>
-                                                            <a class="dropdown-item"
+                                                            {{-- <a class="dropdown-item"
                                                                 href="{{ route('ProcessingFee.show', $student->id) }}">
                                                                 <i style="color: #9dc8e2"
                                                                     class="fas fa-money-bill-alt"></i>&nbsp;
@@ -101,7 +102,7 @@
                                                                 <i style="color:goldenrod"
                                                                     class="fas fa-donate"></i>&nbsp;
                                                                 {{ __('Students_trans.add_payment') }}
-                                                            </a>
+                                                            </a> --}}
                                                             <a class="dropdown-item"
                                                                 data-target="#Delete_Student{{ $student->id }}"
                                                                 data-toggle="modal"

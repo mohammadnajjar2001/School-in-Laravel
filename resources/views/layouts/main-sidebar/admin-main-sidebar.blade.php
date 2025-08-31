@@ -131,36 +131,9 @@
             </ul>
         </li>
 
-        <!-- Accounts-->
-        <li>
-            <a href="javascript:void(0);" data-toggle="collapse" data-target="#Accounts-menu">
-                <div class="pull-left"><i class="fas fa-money-bill-wave-alt"></i><span
-                        class="right-nav-text">{{ trans('main_trans.Accounts') }}</span></div>
-                <div class="pull-right"><i class="ti-plus"></i></div>
-                <div class="clearfix"></div>
-            </a>
-            <ul id="Accounts-menu" class="collapse" data-parent="#sidebarnav">
-                <li><a href="{{ route('Fees.index') }}">{{ trans('main_trans.Fees') }}</a></li>
-                <li><a href="{{ route('Fees_Invoices.index') }}">{{ trans('main_trans.Invoices') }}</a></li>
-                <li><a href="{{ route('receipt_students.index') }}">{{ trans('main_trans.Receipts') }}</a></li>
-                <li><a href="{{ route('ProcessingFee.index') }}">{{ trans('main_trans.Exclusions') }}</a></li>
-                <li><a href="{{ route('Payment_students.index') }}">{{ trans('main_trans.Payments') }}</a></li>
 
-            </ul>
-        </li>
 
-        <!-- Attendance-->
-        <li>
-            <a href="javascript:void(0);" data-toggle="collapse" data-target="#Attendance-icon">
-                <div class="pull-left"><i class="fas fa-calendar-alt"></i><span
-                        class="right-nav-text">{{ trans('main_trans.Attendance') }}</span></div>
-                <div class="pull-right"><i class="ti-plus"></i></div>
-                <div class="clearfix"></div>
-            </a>
-            <ul id="Attendance-icon" class="collapse" data-parent="#sidebarnav">
-                <li><a href="{{ route('Attendance.index') }}">{{ trans('main_trans.StudentList') }}</a></li>
-            </ul>
-        </li>
+
 
         <!-- Subjects-->
         <li>
@@ -178,21 +151,6 @@
         </li>
 
 
-        <!-- Quizzes-->
-        <li>
-            <a href="javascript:void(0);" data-toggle="collapse" data-target="#Exams-icon">
-                <div class="pull-left">
-                    <i class="fas fa-book-open"></i>
-                    <span class="right-nav-text">{{ trans('main_trans.Exams') }}</span>
-                </div>
-                <div class="pull-right"><i class="ti-plus"></i></div>
-                <div class="clearfix"></div>
-            </a>
-            <ul id="Exams-icon" class="collapse" data-parent="#sidebarnav">
-                <li><a href="{{ route('Quizzes.index') }}">{{ trans('main_trans.ExamsList') }}</a></li>
-                <li><a href="{{ route('Questions.index') }}">{{ trans('main_trans.QuestionsList') }}</a></li>
-            </ul>
-        </li>
 
 
 
@@ -222,7 +180,51 @@
                 <li><a href="{{ route('online_classes.index') }}">{{ trans('main_trans.ZoomClasses') }}</a></li>
             </ul>
         </li>
+         <!-- Quizzes-->
+        <li>
+            <a href="javascript:void(0);" data-toggle="collapse" data-target="#Exams-icon">
+                <div class="pull-left">
+                    <i class="fas fa-book-open"></i>
+                    <span class="right-nav-text">{{ trans('main_trans.Exams') }}</span>
+                </div>
+                <div class="pull-right"><i class="ti-plus"></i></div>
+                <div class="clearfix"></div>
+            </a>
+            <ul id="Exams-icon" class="collapse" data-parent="#sidebarnav">
+                <li><a href="{{ route('Quizzes.index') }}">{{ trans('main_trans.ExamsList') }}</a></li>
+                <li><a href="{{ route('Questions.index') }}">{{ trans('main_trans.QuestionsList') }}</a></li>
+            </ul>
+        </li>
 
+        <!-- Attendance-->
+        <li>
+            <a href="javascript:void(0);" data-toggle="collapse" data-target="#Attendance-icon">
+                <div class="pull-left"><i class="fas fa-calendar-alt"></i><span
+                        class="right-nav-text">{{ trans('main_trans.Attendance') }}</span></div>
+                <div class="pull-right"><i class="ti-plus"></i></div>
+                <div class="clearfix"></div>
+            </a>
+            <ul id="Attendance-icon" class="collapse" data-parent="#sidebarnav">
+                <li><a href="{{ route('Attendance.index') }}">{{ trans('main_trans.StudentList') }}</a></li>
+            </ul>
+        </li>
+         <!-- Accounts-->
+        <li>
+            <a href="javascript:void(0);" data-toggle="collapse" data-target="#Accounts-menu">
+                <div class="pull-left"><i class="fas fa-money-bill-wave-alt"></i><span
+                        class="right-nav-text">{{ trans('main_trans.Accounts') }}</span></div>
+                <div class="pull-right"><i class="ti-plus"></i></div>
+                <div class="clearfix"></div>
+            </a>
+            <ul id="Accounts-menu" class="collapse" data-parent="#sidebarnav">
+                <li><a href="{{ route('Fees.index') }}">{{ trans('main_trans.Fees') }}</a></li>
+                <li><a href="{{ route('Fees_Invoices.index') }}">{{ trans('main_trans.Invoices') }}</a></li>
+                <li><a href="{{ route('receipt_students.index') }}">{{ trans('main_trans.Receipts') }}</a></li>
+                {{-- <li><a href="{{ route('ProcessingFee.index') }}">{{ trans('main_trans.Exclusions') }}</a></li> --}}
+                {{-- <li><a href="{{ route('Payment_students.index') }}">{{ trans('main_trans.Payments') }}</a></li> --}}
+
+            </ul>
+        </li>
 
         <!-- Settings-->
         <li>

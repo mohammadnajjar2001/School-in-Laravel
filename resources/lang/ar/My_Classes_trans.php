@@ -21,7 +21,7 @@ return [
     'Processes'=>'العمليات',
     'Edit'=>'تعديل',
     'Delete'=>'حذف',
-    'delete_Class_Error'=>'لا يمكن حذف الصف لانه يحتوي علي اقسام',
+    'delete_Class_Error'=>'لا يمكن حذف الصف لانه يحتوي علي شعب',
     'Close' => 'اغلاق',
     'Warning_Grade' => 'هل انت متأكد من الحذف'
 ];

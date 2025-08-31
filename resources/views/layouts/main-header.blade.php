@@ -4,8 +4,8 @@ header start-->
     <!-- logo -->
     <div class="text-left navbar-brand-wrapper">
         <a class="navbar-brand brand-logo" href="{{ url('/dashboard') }}"><img src="{{ URL::asset('assets/images/logo-icon-light.png') }}" alt=""></a>
-        <a class="navbar-brand brand-logo-mini" href="{{ url('/dashboard') }}"><img src="{{ URL::asset('assets/images/logo-icon-light.png') }}"
-                alt=""></a>
+        {{-- <a class="navbar-brand brand-logo-mini" href="{{ url('/dashboard') }}"><img src="{{ URL::asset('assets/images/logo-icon-light.png') }}"
+                alt=""></a> --}}
 
 
     </div>

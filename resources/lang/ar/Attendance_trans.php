@@ -18,7 +18,7 @@ return [
     'Number'                => '#',
     'Name'                  => 'الاسم',
     'Grade'                 => 'المرحلة',
-    'Section'               => 'القسم',
+    'Section'               => 'الشعبة',
     'Date'                  => 'التاريخ',
     'Status'                => 'الحالة',
     'Present'               => 'حضور',

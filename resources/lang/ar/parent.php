@@ -5,7 +5,7 @@ return [
     'student_info' => 'معلومات الطالب',
     'grade' => 'المرحلة',
     'classroom' => 'الصف',
-    'section' => 'القسم',
+    'section' => 'الشعبة',
     'test_count' => 'عدد الاختبارات',
     'sons' => 'الابناء',
     'attendance_report' => 'تقرير الحضور والغياب',

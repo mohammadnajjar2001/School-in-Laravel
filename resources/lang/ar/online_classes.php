@@ -12,7 +12,7 @@ return [
     'actions'          => 'العمليات',
     'grade'            => 'المرحلة',
     'classroom'        => 'الصف',
-    'section'          => 'القسم',
+    'section'          => 'الشعبة',
     'teacher'          => 'المعلم',
     'start_date'       => 'تاريخ البداية',
     'class_time'       => 'وقت الحصة',
@@ -22,7 +22,7 @@ return [
     'table' => [
         'grade' => 'المرحلة',
         'classroom' => 'الصف',
-        'section' => 'القسم',
+        'section' => 'الشعبة',
         'teacher' => 'المعلم',
         'class_title' => 'عنوان الحصة',
         'start_date' => 'تاريخ البداية',
@@ -32,5 +32,5 @@ return [
     ],
     'delete_class'      => 'حذف الحصة',
     'delete_confirmation' => 'هل أنت متأكد من عملية الحذف؟',
-    
+
 ];

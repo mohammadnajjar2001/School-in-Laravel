@@ -57,8 +57,8 @@ class QuizzController extends Controller
             'Classroom_id.required' => 'الصف الدراسي مطلوب.',
             'Classroom_id.exists'   => 'الصف الدراسي غير موجود.',
 
-            'section_id.required' => 'القسم مطلوب.',
-            'section_id.exists'   => 'القسم غير موجود.',
+            'section_id.required' => 'الشعبة مطلوب.',
+            'section_id.exists'   => 'الشعبة غير موجود.',
         ]);
 
         try {

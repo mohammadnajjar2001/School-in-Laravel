@@ -37,8 +37,8 @@ class QuizzRepository implements QuizzRepositoryInterface
             'Grade_id.exists'     => 'المرحلة الدراسية غير موجودة.',
             'Classroom_id.required' => 'الصف الدراسي مطلوب.',
             'Classroom_id.exists'   => 'الصف الدراسي غير موجود.',
-            'section_id.required' => 'القسم مطلوب.',
-            'section_id.exists'   => 'القسم غير موجود.',
+            'section_id.required' => 'الشعبة مطلوب.',
+            'section_id.exists'   => 'الشعبة غير موجود.',
             'teacher_id.required' => 'المعلم مطلوب.',
             'teacher_id.exists'   => 'المعلم غير موجود.',
         ];
