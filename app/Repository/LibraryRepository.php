@@ -44,8 +44,8 @@ class LibraryRepository implements LibraryRepositoryInterface
             'Grade_id.exists' => 'المرحلة غير موجودة',
             'Classroom_id.required' => 'الصف الدراسي مطلوب',
             'Classroom_id.exists' => 'الصف غير موجود',
-            'section_id.required' => 'القسم مطلوب',
-            'section_id.exists' => 'القسم غير موجود',
+            'section_id.required' => 'الشعبة مطلوب',
+            'section_id.exists' => 'الشعبة غير موجود',
         ]);
 
         try {

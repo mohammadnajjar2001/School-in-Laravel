@@ -3,7 +3,7 @@
 return [
     'welcome' => 'مرحبا بك',
     'students_count' => 'عدد الطلاب',
-    'sections_count' => 'عدد الاقسام',
+    'sections_count' => 'عدد الشعب',
     'view_data' => 'عرض البيانات',
     'latest_operations' => 'اخر العمليات علي النظام',
     'students' => 'الطلاب',
@@ -15,7 +15,7 @@ return [
     'gender' => 'النوع',
     'grade' => 'المرحلة الدراسية',
     'classroom' => 'الصف الدراسي',
-    'section' => 'القسم',
+    'section' => 'الشعبة',
     'date_added' => 'تاريخ الاضافة',
     'no_data' => 'لاتوجد بيانات',
     'teacher_name' => 'اسم المعلم',
