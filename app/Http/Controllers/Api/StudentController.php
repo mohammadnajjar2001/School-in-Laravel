@@ -24,7 +24,7 @@ class StudentController extends Controller
 
         // تجهيز الرسالة التوضيحية
         if ($balance > 0) {
-            $status = " يتوجب على الطالب دفع ${$balance}  للمدرسة";
+            $status = " يتوجب على الطالب دفع \${$balance}  للمدرسة";
         } elseif ($balance < 0) {
             $status = " الطالب سدد كامل القسط، ولديه رصيد زائد بقيمة ". "$" . abs($balance) ;
         } else {
