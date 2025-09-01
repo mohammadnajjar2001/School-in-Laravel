@@ -155,7 +155,7 @@
 
 
         <!-- library-->
-        <li>
+        {{-- <li>
             <a href="javascript:void(0);" data-toggle="collapse" data-target="#library-icon">
                 <div class="pull-left"><i class="fas fa-book"></i><span
                         class="right-nav-text">{{ trans('main_trans.library') }}</span></div>
@@ -165,7 +165,7 @@
             <ul id="library-icon" class="collapse" data-parent="#sidebarnav">
                 <li><a href="{{ route('library.index') }}">{{ trans('main_trans.BooksList') }}</a></li>
             </ul>
-        </li>
+        </li> --}}
 
 
         <!-- Online classes-->
