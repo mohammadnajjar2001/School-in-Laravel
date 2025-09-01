@@ -105,6 +105,7 @@ return [
     'Actions'            => 'العمليات',
     'AddOfflineLesson'   => 'اضافة حصة اوفلاين جديدة',
     'OnlineLessons' => 'حصص أونلاين',
+    'AddOnlineLesson' => ' إضافة حصص أونلاين',
 
 
 

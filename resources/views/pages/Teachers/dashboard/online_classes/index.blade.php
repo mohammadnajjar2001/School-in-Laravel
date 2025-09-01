@@ -22,7 +22,8 @@
                         <div class="card card-statistics h-100">
                             <div class="card-body">
                            <a href="{{ route('online_zoom_classes.create') }}" class="btn btn-success" role="button" aria-pressed="true">
-                                {{ trans('main_trans.AddOnlineLesson') }}
+
+                            {{ trans('main_trans.AddOnlineLesson') }}
                             </a>
 
                             <a class="btn btn-warning" href="{{ route('indirect.teacher.create') }}">
